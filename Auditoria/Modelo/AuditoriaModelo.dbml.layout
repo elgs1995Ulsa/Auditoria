@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.625" name="AuditoriaModelo">
+  <DataContextMoniker Name="/AuditoriaModeloDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" absoluteBounds="6.25, 1.25, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Auditor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1db1ca1-0ea9-41fc-93f2-ac214d1f6a99" absoluteBounds="6.265, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" absoluteBounds="9, 1.125, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditorXEmpresa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7d229ebb-ab3a-434a-9f4e-0135d9e2d31e" absoluteBounds="9.015, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a373a57b-4dfe-4691-838e-1d0f68c1d8c0" absoluteBounds="6.25, 5.5, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Empresa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b70b32a5-f166-436d-bb57-269d968956f3" absoluteBounds="6.265, 5.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b70aaf96-5c7b-43cc-9a5a-1199a9413037" absoluteBounds="0.75, 1.25, 2, 1.1939925130208338">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Rol" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36403dfb-4acd-47df-9b66-26b8b2919691" absoluteBounds="0.765, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a99fa03b-677d-4584-9163-408ee4440fad" absoluteBounds="3.5, 0.875, 2, 1.7708968098958333">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee184c24-ac0b-4365-a635-c927d9fd18ed" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 1.84699625651042); (9 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditorXEmpresa" />
+      <nodes>
+        <classShapeMoniker Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" />
+        <classShapeMoniker Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 6.96235270182292); (10 : 6.96235270182292); (10 : 2.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditorXEmpresa" />
+      <nodes>
+        <classShapeMoniker Id="a373a57b-4dfe-4691-838e-1d0f68c1d8c0" />
+        <classShapeMoniker Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.84699625651042); (6.25 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Usuario/Usuario_Auditor" />
+      <nodes>
+        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
+        <classShapeMoniker Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (2.82291666666667 : 1.84699625651042 : JumpStart); (2.98958333333333 : 1.84699625651042 : JumpEnd); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Rol/Rol_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="b70aaf96-5c7b-43cc-9a5a-1199a9413037" />
+        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8a3ade5d-ab5e-483a-ad71-118926636b60" absoluteBounds="1, 4.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Persona" />
+      <nestedChildShapes>
+        <elementListCompartment Id="888dcfd8-b137-46be-8538-9090a9fcabfe" absoluteBounds="1.0150000000000001, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.90625 : 4.25); (2.90625 : 1.03125); (3.5 : 1.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Persona/Persona_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="8a3ade5d-ab5e-483a-ad71-118926636b60" />
+        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
