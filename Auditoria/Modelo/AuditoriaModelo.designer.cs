@@ -30,9 +30,6 @@ namespace Auditoria.Modelo
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     partial void InsertAuditor(Auditor instance);
     partial void UpdateAuditor(Auditor instance);
     partial void DeleteAuditor(Auditor instance);
@@ -57,6 +54,9 @@ namespace Auditoria.Modelo
     partial void InsertRol(Rol instance);
     partial void UpdateRol(Rol instance);
     partial void DeleteRol(Rol instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public AuditoriaModeloDataContext() : 
@@ -87,14 +87,6 @@ namespace Auditoria.Modelo
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Usuario> Usuario
-		{
-			get
-			{
-				return this.GetTable<Usuario>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Auditor> Auditor
@@ -160,273 +152,13 @@ namespace Auditoria.Modelo
 				return this.GetTable<Rol>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idUsuario;
-		
-		private string _nombreUsuario;
-		
-		private string _contrasenaUsuario;
-		
-		private int _idPersona;
-		
-		private int _idRol;
-		
-		private EntitySet<Auditor> _Auditor;
-		
-		private EntityRef<Persona> _Persona;
-		
-		private EntityRef<Rol> _Rol;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidUsuarioChanging(int value);
-    partial void OnidUsuarioChanged();
-    partial void OnnombreUsuarioChanging(string value);
-    partial void OnnombreUsuarioChanged();
-    partial void OncontrasenaUsuarioChanging(string value);
-    partial void OncontrasenaUsuarioChanged();
-    partial void OnidPersonaChanging(int value);
-    partial void OnidPersonaChanged();
-    partial void OnidRolChanging(int value);
-    partial void OnidRolChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			this._Auditor = new EntitySet<Auditor>(new Action<Auditor>(this.attach_Auditor), new Action<Auditor>(this.detach_Auditor));
-			this._Persona = default(EntityRef<Persona>);
-			this._Rol = default(EntityRef<Rol>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idUsuario
+		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
-				return this._idUsuario;
+				return this.GetTable<Usuario>();
 			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this.OnidUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._idUsuario = value;
-					this.SendPropertyChanged("idUsuario");
-					this.OnidUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
-		public string nombreUsuario
-		{
-			get
-			{
-				return this._nombreUsuario;
-			}
-			set
-			{
-				if ((this._nombreUsuario != value))
-				{
-					this.OnnombreUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._nombreUsuario = value;
-					this.SendPropertyChanged("nombreUsuario");
-					this.OnnombreUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contrasenaUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
-		public string contrasenaUsuario
-		{
-			get
-			{
-				return this._contrasenaUsuario;
-			}
-			set
-			{
-				if ((this._contrasenaUsuario != value))
-				{
-					this.OncontrasenaUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._contrasenaUsuario = value;
-					this.SendPropertyChanged("contrasenaUsuario");
-					this.OncontrasenaUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					if (this._Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._idPersona = value;
-					this.SendPropertyChanged("idPersona");
-					this.OnidPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
-		public int idRol
-		{
-			get
-			{
-				return this._idRol;
-			}
-			set
-			{
-				if ((this._idRol != value))
-				{
-					if (this._Rol.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidRolChanging(value);
-					this.SendPropertyChanging();
-					this._idRol = value;
-					this.SendPropertyChanged("idRol");
-					this.OnidRolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Auditor", Storage="_Auditor", ThisKey="idUsuario", OtherKey="idUsuario")]
-		public EntitySet<Auditor> Auditor
-		{
-			get
-			{
-				return this._Auditor;
-			}
-			set
-			{
-				this._Auditor.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="idPersona", IsForeignKey=true)]
-		public Persona Persona
-		{
-			get
-			{
-				return this._Persona.Entity;
-			}
-			set
-			{
-				Persona previousValue = this._Persona.Entity;
-				if (((previousValue != value) 
-							|| (this._Persona.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Persona.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Persona.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._idPersona = value.idPersona;
-					}
-					else
-					{
-						this._idPersona = default(int);
-					}
-					this.SendPropertyChanged("Persona");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="idRol", OtherKey="idRol", IsForeignKey=true)]
-		public Rol Rol
-		{
-			get
-			{
-				return this._Rol.Entity;
-			}
-			set
-			{
-				Rol previousValue = this._Rol.Entity;
-				if (((previousValue != value) 
-							|| (this._Rol.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rol.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Rol.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._idRol = value.idRol;
-					}
-					else
-					{
-						this._idRol = default(int);
-					}
-					this.SendPropertyChanged("Rol");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Auditor(Auditor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_Auditor(Auditor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
 		}
 	}
 	
@@ -2988,6 +2720,274 @@ namespace Auditoria.Modelo
 		{
 			this.SendPropertyChanging();
 			entity.Rol = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idUsuario;
+		
+		private string _nombreUsuario;
+		
+		private string _contrasenaUsuario;
+		
+		private int _idPersona;
+		
+		private int _idRol;
+		
+		private EntitySet<Auditor> _Auditor;
+		
+		private EntityRef<Persona> _Persona;
+		
+		private EntityRef<Rol> _Rol;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidUsuarioChanging(int value);
+    partial void OnidUsuarioChanged();
+    partial void OnnombreUsuarioChanging(string value);
+    partial void OnnombreUsuarioChanged();
+    partial void OncontrasenaUsuarioChanging(string value);
+    partial void OncontrasenaUsuarioChanged();
+    partial void OnidPersonaChanging(int value);
+    partial void OnidPersonaChanged();
+    partial void OnidRolChanging(int value);
+    partial void OnidRolChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._Auditor = new EntitySet<Auditor>(new Action<Auditor>(this.attach_Auditor), new Action<Auditor>(this.detach_Auditor));
+			this._Persona = default(EntityRef<Persona>);
+			this._Rol = default(EntityRef<Rol>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this.OnidUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._idUsuario = value;
+					this.SendPropertyChanged("idUsuario");
+					this.OnidUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		public string nombreUsuario
+		{
+			get
+			{
+				return this._nombreUsuario;
+			}
+			set
+			{
+				if ((this._nombreUsuario != value))
+				{
+					this.OnnombreUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._nombreUsuario = value;
+					this.SendPropertyChanged("nombreUsuario");
+					this.OnnombreUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contrasenaUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		public string contrasenaUsuario
+		{
+			get
+			{
+				return this._contrasenaUsuario;
+			}
+			set
+			{
+				if ((this._contrasenaUsuario != value))
+				{
+					this.OncontrasenaUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._contrasenaUsuario = value;
+					this.SendPropertyChanged("contrasenaUsuario");
+					this.OncontrasenaUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
+		public int idPersona
+		{
+			get
+			{
+				return this._idPersona;
+			}
+			set
+			{
+				if ((this._idPersona != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidPersonaChanging(value);
+					this.SendPropertyChanging();
+					this._idPersona = value;
+					this.SendPropertyChanged("idPersona");
+					this.OnidPersonaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					if (this._Rol.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidRolChanging(value);
+					this.SendPropertyChanging();
+					this._idRol = value;
+					this.SendPropertyChanged("idRol");
+					this.OnidRolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Auditor", Storage="_Auditor", ThisKey="idUsuario", OtherKey="idUsuario")]
+		public EntitySet<Auditor> Auditor
+		{
+			get
+			{
+				return this._Auditor;
+			}
+			set
+			{
+				this._Auditor.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="idPersona", IsForeignKey=true)]
+		public Persona Persona
+		{
+			get
+			{
+				return this._Persona.Entity;
+			}
+			set
+			{
+				Persona previousValue = this._Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Persona.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Persona.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._idPersona = value.idPersona;
+					}
+					else
+					{
+						this._idPersona = default(int);
+					}
+					this.SendPropertyChanged("Persona");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="idRol", OtherKey="idRol", IsForeignKey=true)]
+		public Rol Rol
+		{
+			get
+			{
+				return this._Rol.Entity;
+			}
+			set
+			{
+				Rol previousValue = this._Rol.Entity;
+				if (((previousValue != value) 
+							|| (this._Rol.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rol.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Rol.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._idRol = value.idRol;
+					}
+					else
+					{
+						this._idRol = default(int);
+					}
+					this.SendPropertyChanged("Rol");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Auditor(Auditor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_Auditor(Auditor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
 		}
 	}
 }

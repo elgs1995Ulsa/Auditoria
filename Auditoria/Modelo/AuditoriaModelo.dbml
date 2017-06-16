@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="semestralAuditoria" Class="AuditoriaModeloDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=semestralAuditoria;Integrated Security=True" SettingsObjectName="Auditoria.Properties.Settings" SettingsPropertyName="semestralAuditoriaConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Usuario" Member="Usuario">
-    <Type Name="Usuario">
-      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nombreUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
-      <Column Name="contrasenaUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
-      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Usuario_Auditor" Member="Auditor" ThisKey="idUsuario" OtherKey="idUsuario" Type="Auditor" />
-      <Association Name="Persona_Usuario" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
-      <Association Name="Rol_Usuario" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GVNOENM\MSSQLSERVEREDUAR;Initial Catalog=semestralAuditoria;Integrated Security=True" SettingsObjectName="Auditoria.Properties.Settings" SettingsPropertyName="semestralAuditoriaConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Auditor" Member="Auditor">
     <Type Name="Auditor">
       <Column Name="idAuditor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -128,6 +116,18 @@
       <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nombreRol" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="Rol_Usuario" Member="Usuario" ThisKey="idRol" OtherKey="idRol" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="contrasenaUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Auditor" Member="Auditor" ThisKey="idUsuario" OtherKey="idUsuario" Type="Auditor" />
+      <Association Name="Persona_Usuario" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
