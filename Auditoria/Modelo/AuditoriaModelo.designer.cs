@@ -30,24 +30,33 @@ namespace Auditoria.Modelo
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     partial void InsertAuditor(Auditor instance);
     partial void UpdateAuditor(Auditor instance);
     partial void DeleteAuditor(Auditor instance);
+    partial void InsertAuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar instance);
+    partial void UpdateAuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar instance);
+    partial void DeleteAuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar instance);
+    partial void InsertAuditoriaRecursosHumanos(AuditoriaRecursosHumanos instance);
+    partial void UpdateAuditoriaRecursosHumanos(AuditoriaRecursosHumanos instance);
+    partial void DeleteAuditoriaRecursosHumanos(AuditoriaRecursosHumanos instance);
+    partial void InsertAuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento instance);
+    partial void UpdateAuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento instance);
+    partial void DeleteAuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento instance);
     partial void InsertAuditorXEmpresa(AuditorXEmpresa instance);
     partial void UpdateAuditorXEmpresa(AuditorXEmpresa instance);
     partial void DeleteAuditorXEmpresa(AuditorXEmpresa instance);
     partial void InsertEmpresa(Empresa instance);
     partial void UpdateEmpresa(Empresa instance);
     partial void DeleteEmpresa(Empresa instance);
-    partial void InsertRol(Rol instance);
-    partial void UpdateRol(Rol instance);
-    partial void DeleteRol(Rol instance);
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     partial void InsertPersona(Persona instance);
     partial void UpdatePersona(Persona instance);
     partial void DeletePersona(Persona instance);
+    partial void InsertRol(Rol instance);
+    partial void UpdateRol(Rol instance);
+    partial void DeleteRol(Rol instance);
     #endregion
 		
 		public AuditoriaModeloDataContext() : 
@@ -80,11 +89,43 @@ namespace Auditoria.Modelo
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Usuario> Usuario
+		{
+			get
+			{
+				return this.GetTable<Usuario>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Auditor> Auditor
 		{
 			get
 			{
 				return this.GetTable<Auditor>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AuditoriaCapacitacionYBienestar> AuditoriaCapacitacionYBienestar
+		{
+			get
+			{
+				return this.GetTable<AuditoriaCapacitacionYBienestar>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AuditoriaRecursosHumanos> AuditoriaRecursosHumanos
+		{
+			get
+			{
+				return this.GetTable<AuditoriaRecursosHumanos>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AuditoriaRecursosYReclutamiento> AuditoriaRecursosYReclutamiento
+		{
+			get
+			{
+				return this.GetTable<AuditoriaRecursosYReclutamiento>();
 			}
 		}
 		
@@ -104,6 +145,14 @@ namespace Auditoria.Modelo
 			}
 		}
 		
+		public System.Data.Linq.Table<Persona> Persona
+		{
+			get
+			{
+				return this.GetTable<Persona>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Rol> Rol
 		{
 			get
@@ -111,21 +160,273 @@ namespace Auditoria.Modelo
 				return this.GetTable<Rol>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<Usuario> Usuario
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idUsuario;
+		
+		private string _nombreUsuario;
+		
+		private string _contrasenaUsuario;
+		
+		private int _idPersona;
+		
+		private int _idRol;
+		
+		private EntitySet<Auditor> _Auditor;
+		
+		private EntityRef<Persona> _Persona;
+		
+		private EntityRef<Rol> _Rol;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidUsuarioChanging(int value);
+    partial void OnidUsuarioChanged();
+    partial void OnnombreUsuarioChanging(string value);
+    partial void OnnombreUsuarioChanged();
+    partial void OncontrasenaUsuarioChanging(string value);
+    partial void OncontrasenaUsuarioChanged();
+    partial void OnidPersonaChanging(int value);
+    partial void OnidPersonaChanged();
+    partial void OnidRolChanging(int value);
+    partial void OnidRolChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._Auditor = new EntitySet<Auditor>(new Action<Auditor>(this.attach_Auditor), new Action<Auditor>(this.detach_Auditor));
+			this._Persona = default(EntityRef<Persona>);
+			this._Rol = default(EntityRef<Rol>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idUsuario
 		{
 			get
 			{
-				return this.GetTable<Usuario>();
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this.OnidUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._idUsuario = value;
+					this.SendPropertyChanged("idUsuario");
+					this.OnidUsuarioChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Persona> Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		public string nombreUsuario
 		{
 			get
 			{
-				return this.GetTable<Persona>();
+				return this._nombreUsuario;
 			}
+			set
+			{
+				if ((this._nombreUsuario != value))
+				{
+					this.OnnombreUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._nombreUsuario = value;
+					this.SendPropertyChanged("nombreUsuario");
+					this.OnnombreUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contrasenaUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
+		public string contrasenaUsuario
+		{
+			get
+			{
+				return this._contrasenaUsuario;
+			}
+			set
+			{
+				if ((this._contrasenaUsuario != value))
+				{
+					this.OncontrasenaUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._contrasenaUsuario = value;
+					this.SendPropertyChanged("contrasenaUsuario");
+					this.OncontrasenaUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
+		public int idPersona
+		{
+			get
+			{
+				return this._idPersona;
+			}
+			set
+			{
+				if ((this._idPersona != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidPersonaChanging(value);
+					this.SendPropertyChanging();
+					this._idPersona = value;
+					this.SendPropertyChanged("idPersona");
+					this.OnidPersonaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					if (this._Rol.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidRolChanging(value);
+					this.SendPropertyChanging();
+					this._idRol = value;
+					this.SendPropertyChanged("idRol");
+					this.OnidRolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Auditor", Storage="_Auditor", ThisKey="idUsuario", OtherKey="idUsuario")]
+		public EntitySet<Auditor> Auditor
+		{
+			get
+			{
+				return this._Auditor;
+			}
+			set
+			{
+				this._Auditor.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="idPersona", IsForeignKey=true)]
+		public Persona Persona
+		{
+			get
+			{
+				return this._Persona.Entity;
+			}
+			set
+			{
+				Persona previousValue = this._Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Persona.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Persona.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._idPersona = value.idPersona;
+					}
+					else
+					{
+						this._idPersona = default(int);
+					}
+					this.SendPropertyChanged("Persona");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="idRol", OtherKey="idRol", IsForeignKey=true)]
+		public Rol Rol
+		{
+			get
+			{
+				return this._Rol.Entity;
+			}
+			set
+			{
+				Rol previousValue = this._Rol.Entity;
+				if (((previousValue != value) 
+							|| (this._Rol.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rol.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Rol.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._idRol = value.idRol;
+					}
+					else
+					{
+						this._idRol = default(int);
+					}
+					this.SendPropertyChanged("Rol");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Auditor(Auditor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_Auditor(Auditor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
 		}
 	}
 	
@@ -138,6 +439,12 @@ namespace Auditoria.Modelo
 		private int _idAuditor;
 		
 		private int _idUsuario;
+		
+		private EntitySet<AuditoriaCapacitacionYBienestar> _AuditoriaCapacitacionYBienestar;
+		
+		private EntitySet<AuditoriaRecursosHumanos> _AuditoriaRecursosHumanos;
+		
+		private EntitySet<AuditoriaRecursosYReclutamiento> _AuditoriaRecursosYReclutamiento;
 		
 		private EntitySet<AuditorXEmpresa> _AuditorXEmpresa;
 		
@@ -155,6 +462,9 @@ namespace Auditoria.Modelo
 		
 		public Auditor()
 		{
+			this._AuditoriaCapacitacionYBienestar = new EntitySet<AuditoriaCapacitacionYBienestar>(new Action<AuditoriaCapacitacionYBienestar>(this.attach_AuditoriaCapacitacionYBienestar), new Action<AuditoriaCapacitacionYBienestar>(this.detach_AuditoriaCapacitacionYBienestar));
+			this._AuditoriaRecursosHumanos = new EntitySet<AuditoriaRecursosHumanos>(new Action<AuditoriaRecursosHumanos>(this.attach_AuditoriaRecursosHumanos), new Action<AuditoriaRecursosHumanos>(this.detach_AuditoriaRecursosHumanos));
+			this._AuditoriaRecursosYReclutamiento = new EntitySet<AuditoriaRecursosYReclutamiento>(new Action<AuditoriaRecursosYReclutamiento>(this.attach_AuditoriaRecursosYReclutamiento), new Action<AuditoriaRecursosYReclutamiento>(this.detach_AuditoriaRecursosYReclutamiento));
 			this._AuditorXEmpresa = new EntitySet<AuditorXEmpresa>(new Action<AuditorXEmpresa>(this.attach_AuditorXEmpresa), new Action<AuditorXEmpresa>(this.detach_AuditorXEmpresa));
 			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
@@ -201,6 +511,45 @@ namespace Auditoria.Modelo
 					this.SendPropertyChanged("idUsuario");
 					this.OnidUsuarioChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaCapacitacionYBienestar", Storage="_AuditoriaCapacitacionYBienestar", ThisKey="idAuditor", OtherKey="idAuditor")]
+		public EntitySet<AuditoriaCapacitacionYBienestar> AuditoriaCapacitacionYBienestar
+		{
+			get
+			{
+				return this._AuditoriaCapacitacionYBienestar;
+			}
+			set
+			{
+				this._AuditoriaCapacitacionYBienestar.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaRecursosHumanos", Storage="_AuditoriaRecursosHumanos", ThisKey="idAuditor", OtherKey="idAuditor")]
+		public EntitySet<AuditoriaRecursosHumanos> AuditoriaRecursosHumanos
+		{
+			get
+			{
+				return this._AuditoriaRecursosHumanos;
+			}
+			set
+			{
+				this._AuditoriaRecursosHumanos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaRecursosYReclutamiento", Storage="_AuditoriaRecursosYReclutamiento", ThisKey="idAuditor", OtherKey="idAuditor")]
+		public EntitySet<AuditoriaRecursosYReclutamiento> AuditoriaRecursosYReclutamiento
+		{
+			get
+			{
+				return this._AuditoriaRecursosYReclutamiento;
+			}
+			set
+			{
+				this._AuditoriaRecursosYReclutamiento.Assign(value);
 			}
 		}
 		
@@ -271,6 +620,42 @@ namespace Auditoria.Modelo
 			}
 		}
 		
+		private void attach_AuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = this;
+		}
+		
+		private void detach_AuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = null;
+		}
+		
+		private void attach_AuditoriaRecursosHumanos(AuditoriaRecursosHumanos entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = this;
+		}
+		
+		private void detach_AuditoriaRecursosHumanos(AuditoriaRecursosHumanos entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = null;
+		}
+		
+		private void attach_AuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = this;
+		}
+		
+		private void detach_AuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.Auditor = null;
+		}
+		
 		private void attach_AuditorXEmpresa(AuditorXEmpresa entity)
 		{
 			this.SendPropertyChanging();
@@ -281,6 +666,1278 @@ namespace Auditoria.Modelo
 		{
 			this.SendPropertyChanging();
 			entity.Auditor = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AuditoriaCapacitacionYBienestar")]
+	public partial class AuditoriaCapacitacionYBienestar : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idAuditoriaCapacitacionYBienestar;
+		
+		private int _p1;
+		
+		private int _p2;
+		
+		private int _p3;
+		
+		private int _p4;
+		
+		private int _p5;
+		
+		private int _p6;
+		
+		private int _p7;
+		
+		private int _p8;
+		
+		private string _comentario;
+		
+		private int _idAuditor;
+		
+		private int _idEmpresa;
+		
+		private EntityRef<Auditor> _Auditor;
+		
+		private EntityRef<Empresa> _Empresa;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidAuditoriaCapacitacionYBienestarChanging(int value);
+    partial void OnidAuditoriaCapacitacionYBienestarChanged();
+    partial void Onp1Changing(int value);
+    partial void Onp1Changed();
+    partial void Onp2Changing(int value);
+    partial void Onp2Changed();
+    partial void Onp3Changing(int value);
+    partial void Onp3Changed();
+    partial void Onp4Changing(int value);
+    partial void Onp4Changed();
+    partial void Onp5Changing(int value);
+    partial void Onp5Changed();
+    partial void Onp6Changing(int value);
+    partial void Onp6Changed();
+    partial void Onp7Changing(int value);
+    partial void Onp7Changed();
+    partial void Onp8Changing(int value);
+    partial void Onp8Changed();
+    partial void OncomentarioChanging(string value);
+    partial void OncomentarioChanged();
+    partial void OnidAuditorChanging(int value);
+    partial void OnidAuditorChanged();
+    partial void OnidEmpresaChanging(int value);
+    partial void OnidEmpresaChanged();
+    #endregion
+		
+		public AuditoriaCapacitacionYBienestar()
+		{
+			this._Auditor = default(EntityRef<Auditor>);
+			this._Empresa = default(EntityRef<Empresa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditoriaCapacitacionYBienestar", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idAuditoriaCapacitacionYBienestar
+		{
+			get
+			{
+				return this._idAuditoriaCapacitacionYBienestar;
+			}
+			set
+			{
+				if ((this._idAuditoriaCapacitacionYBienestar != value))
+				{
+					this.OnidAuditoriaCapacitacionYBienestarChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditoriaCapacitacionYBienestar = value;
+					this.SendPropertyChanged("idAuditoriaCapacitacionYBienestar");
+					this.OnidAuditoriaCapacitacionYBienestarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p1", DbType="Int NOT NULL")]
+		public int p1
+		{
+			get
+			{
+				return this._p1;
+			}
+			set
+			{
+				if ((this._p1 != value))
+				{
+					this.Onp1Changing(value);
+					this.SendPropertyChanging();
+					this._p1 = value;
+					this.SendPropertyChanged("p1");
+					this.Onp1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p2", DbType="Int NOT NULL")]
+		public int p2
+		{
+			get
+			{
+				return this._p2;
+			}
+			set
+			{
+				if ((this._p2 != value))
+				{
+					this.Onp2Changing(value);
+					this.SendPropertyChanging();
+					this._p2 = value;
+					this.SendPropertyChanged("p2");
+					this.Onp2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p3", DbType="Int NOT NULL")]
+		public int p3
+		{
+			get
+			{
+				return this._p3;
+			}
+			set
+			{
+				if ((this._p3 != value))
+				{
+					this.Onp3Changing(value);
+					this.SendPropertyChanging();
+					this._p3 = value;
+					this.SendPropertyChanged("p3");
+					this.Onp3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p4", DbType="Int NOT NULL")]
+		public int p4
+		{
+			get
+			{
+				return this._p4;
+			}
+			set
+			{
+				if ((this._p4 != value))
+				{
+					this.Onp4Changing(value);
+					this.SendPropertyChanging();
+					this._p4 = value;
+					this.SendPropertyChanged("p4");
+					this.Onp4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p5", DbType="Int NOT NULL")]
+		public int p5
+		{
+			get
+			{
+				return this._p5;
+			}
+			set
+			{
+				if ((this._p5 != value))
+				{
+					this.Onp5Changing(value);
+					this.SendPropertyChanging();
+					this._p5 = value;
+					this.SendPropertyChanged("p5");
+					this.Onp5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p6", DbType="Int NOT NULL")]
+		public int p6
+		{
+			get
+			{
+				return this._p6;
+			}
+			set
+			{
+				if ((this._p6 != value))
+				{
+					this.Onp6Changing(value);
+					this.SendPropertyChanging();
+					this._p6 = value;
+					this.SendPropertyChanged("p6");
+					this.Onp6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p7", DbType="Int NOT NULL")]
+		public int p7
+		{
+			get
+			{
+				return this._p7;
+			}
+			set
+			{
+				if ((this._p7 != value))
+				{
+					this.Onp7Changing(value);
+					this.SendPropertyChanging();
+					this._p7 = value;
+					this.SendPropertyChanged("p7");
+					this.Onp7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p8", DbType="Int NOT NULL")]
+		public int p8
+		{
+			get
+			{
+				return this._p8;
+			}
+			set
+			{
+				if ((this._p8 != value))
+				{
+					this.Onp8Changing(value);
+					this.SendPropertyChanging();
+					this._p8 = value;
+					this.SendPropertyChanged("p8");
+					this.Onp8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comentario", DbType="VarChar(1000)")]
+		public string comentario
+		{
+			get
+			{
+				return this._comentario;
+			}
+			set
+			{
+				if ((this._comentario != value))
+				{
+					this.OncomentarioChanging(value);
+					this.SendPropertyChanging();
+					this._comentario = value;
+					this.SendPropertyChanged("comentario");
+					this.OncomentarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditor", DbType="Int NOT NULL")]
+		public int idAuditor
+		{
+			get
+			{
+				return this._idAuditor;
+			}
+			set
+			{
+				if ((this._idAuditor != value))
+				{
+					if (this._Auditor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidAuditorChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditor = value;
+					this.SendPropertyChanged("idAuditor");
+					this.OnidAuditorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpresa", DbType="Int NOT NULL")]
+		public int idEmpresa
+		{
+			get
+			{
+				return this._idEmpresa;
+			}
+			set
+			{
+				if ((this._idEmpresa != value))
+				{
+					if (this._Empresa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidEmpresaChanging(value);
+					this.SendPropertyChanging();
+					this._idEmpresa = value;
+					this.SendPropertyChanged("idEmpresa");
+					this.OnidEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaCapacitacionYBienestar", Storage="_Auditor", ThisKey="idAuditor", OtherKey="idAuditor", IsForeignKey=true)]
+		public Auditor Auditor
+		{
+			get
+			{
+				return this._Auditor.Entity;
+			}
+			set
+			{
+				Auditor previousValue = this._Auditor.Entity;
+				if (((previousValue != value) 
+							|| (this._Auditor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Auditor.Entity = null;
+						previousValue.AuditoriaCapacitacionYBienestar.Remove(this);
+					}
+					this._Auditor.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaCapacitacionYBienestar.Add(this);
+						this._idAuditor = value.idAuditor;
+					}
+					else
+					{
+						this._idAuditor = default(int);
+					}
+					this.SendPropertyChanged("Auditor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaCapacitacionYBienestar", Storage="_Empresa", ThisKey="idEmpresa", OtherKey="idEmpresa", IsForeignKey=true)]
+		public Empresa Empresa
+		{
+			get
+			{
+				return this._Empresa.Entity;
+			}
+			set
+			{
+				Empresa previousValue = this._Empresa.Entity;
+				if (((previousValue != value) 
+							|| (this._Empresa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Empresa.Entity = null;
+						previousValue.AuditoriaCapacitacionYBienestar.Remove(this);
+					}
+					this._Empresa.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaCapacitacionYBienestar.Add(this);
+						this._idEmpresa = value.idEmpresa;
+					}
+					else
+					{
+						this._idEmpresa = default(int);
+					}
+					this.SendPropertyChanged("Empresa");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AuditoriaRecursosHumanos")]
+	public partial class AuditoriaRecursosHumanos : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idAuditoriaRecursosHumanos;
+		
+		private int _p1;
+		
+		private int _p2;
+		
+		private int _p3;
+		
+		private int _p4;
+		
+		private int _p5;
+		
+		private int _p6;
+		
+		private int _p7;
+		
+		private int _p8;
+		
+		private int _p9;
+		
+		private int _p10;
+		
+		private string _comentario;
+		
+		private int _idAuditor;
+		
+		private int _idEmpresa;
+		
+		private EntityRef<Auditor> _Auditor;
+		
+		private EntityRef<Empresa> _Empresa;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidAuditoriaRecursosHumanosChanging(int value);
+    partial void OnidAuditoriaRecursosHumanosChanged();
+    partial void Onp1Changing(int value);
+    partial void Onp1Changed();
+    partial void Onp2Changing(int value);
+    partial void Onp2Changed();
+    partial void Onp3Changing(int value);
+    partial void Onp3Changed();
+    partial void Onp4Changing(int value);
+    partial void Onp4Changed();
+    partial void Onp5Changing(int value);
+    partial void Onp5Changed();
+    partial void Onp6Changing(int value);
+    partial void Onp6Changed();
+    partial void Onp7Changing(int value);
+    partial void Onp7Changed();
+    partial void Onp8Changing(int value);
+    partial void Onp8Changed();
+    partial void Onp9Changing(int value);
+    partial void Onp9Changed();
+    partial void Onp10Changing(int value);
+    partial void Onp10Changed();
+    partial void OncomentarioChanging(string value);
+    partial void OncomentarioChanged();
+    partial void OnidAuditorChanging(int value);
+    partial void OnidAuditorChanged();
+    partial void OnidEmpresaChanging(int value);
+    partial void OnidEmpresaChanged();
+    #endregion
+		
+		public AuditoriaRecursosHumanos()
+		{
+			this._Auditor = default(EntityRef<Auditor>);
+			this._Empresa = default(EntityRef<Empresa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditoriaRecursosHumanos", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idAuditoriaRecursosHumanos
+		{
+			get
+			{
+				return this._idAuditoriaRecursosHumanos;
+			}
+			set
+			{
+				if ((this._idAuditoriaRecursosHumanos != value))
+				{
+					this.OnidAuditoriaRecursosHumanosChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditoriaRecursosHumanos = value;
+					this.SendPropertyChanged("idAuditoriaRecursosHumanos");
+					this.OnidAuditoriaRecursosHumanosChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p1", DbType="Int NOT NULL")]
+		public int p1
+		{
+			get
+			{
+				return this._p1;
+			}
+			set
+			{
+				if ((this._p1 != value))
+				{
+					this.Onp1Changing(value);
+					this.SendPropertyChanging();
+					this._p1 = value;
+					this.SendPropertyChanged("p1");
+					this.Onp1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p2", DbType="Int NOT NULL")]
+		public int p2
+		{
+			get
+			{
+				return this._p2;
+			}
+			set
+			{
+				if ((this._p2 != value))
+				{
+					this.Onp2Changing(value);
+					this.SendPropertyChanging();
+					this._p2 = value;
+					this.SendPropertyChanged("p2");
+					this.Onp2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p3", DbType="Int NOT NULL")]
+		public int p3
+		{
+			get
+			{
+				return this._p3;
+			}
+			set
+			{
+				if ((this._p3 != value))
+				{
+					this.Onp3Changing(value);
+					this.SendPropertyChanging();
+					this._p3 = value;
+					this.SendPropertyChanged("p3");
+					this.Onp3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p4", DbType="Int NOT NULL")]
+		public int p4
+		{
+			get
+			{
+				return this._p4;
+			}
+			set
+			{
+				if ((this._p4 != value))
+				{
+					this.Onp4Changing(value);
+					this.SendPropertyChanging();
+					this._p4 = value;
+					this.SendPropertyChanged("p4");
+					this.Onp4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p5", DbType="Int NOT NULL")]
+		public int p5
+		{
+			get
+			{
+				return this._p5;
+			}
+			set
+			{
+				if ((this._p5 != value))
+				{
+					this.Onp5Changing(value);
+					this.SendPropertyChanging();
+					this._p5 = value;
+					this.SendPropertyChanged("p5");
+					this.Onp5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p6", DbType="Int NOT NULL")]
+		public int p6
+		{
+			get
+			{
+				return this._p6;
+			}
+			set
+			{
+				if ((this._p6 != value))
+				{
+					this.Onp6Changing(value);
+					this.SendPropertyChanging();
+					this._p6 = value;
+					this.SendPropertyChanged("p6");
+					this.Onp6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p7", DbType="Int NOT NULL")]
+		public int p7
+		{
+			get
+			{
+				return this._p7;
+			}
+			set
+			{
+				if ((this._p7 != value))
+				{
+					this.Onp7Changing(value);
+					this.SendPropertyChanging();
+					this._p7 = value;
+					this.SendPropertyChanged("p7");
+					this.Onp7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p8", DbType="Int NOT NULL")]
+		public int p8
+		{
+			get
+			{
+				return this._p8;
+			}
+			set
+			{
+				if ((this._p8 != value))
+				{
+					this.Onp8Changing(value);
+					this.SendPropertyChanging();
+					this._p8 = value;
+					this.SendPropertyChanged("p8");
+					this.Onp8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p9", DbType="Int NOT NULL")]
+		public int p9
+		{
+			get
+			{
+				return this._p9;
+			}
+			set
+			{
+				if ((this._p9 != value))
+				{
+					this.Onp9Changing(value);
+					this.SendPropertyChanging();
+					this._p9 = value;
+					this.SendPropertyChanged("p9");
+					this.Onp9Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p10", DbType="Int NOT NULL")]
+		public int p10
+		{
+			get
+			{
+				return this._p10;
+			}
+			set
+			{
+				if ((this._p10 != value))
+				{
+					this.Onp10Changing(value);
+					this.SendPropertyChanging();
+					this._p10 = value;
+					this.SendPropertyChanged("p10");
+					this.Onp10Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comentario", DbType="VarChar(1000)")]
+		public string comentario
+		{
+			get
+			{
+				return this._comentario;
+			}
+			set
+			{
+				if ((this._comentario != value))
+				{
+					this.OncomentarioChanging(value);
+					this.SendPropertyChanging();
+					this._comentario = value;
+					this.SendPropertyChanged("comentario");
+					this.OncomentarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditor", DbType="Int NOT NULL")]
+		public int idAuditor
+		{
+			get
+			{
+				return this._idAuditor;
+			}
+			set
+			{
+				if ((this._idAuditor != value))
+				{
+					if (this._Auditor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidAuditorChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditor = value;
+					this.SendPropertyChanged("idAuditor");
+					this.OnidAuditorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpresa", DbType="Int NOT NULL")]
+		public int idEmpresa
+		{
+			get
+			{
+				return this._idEmpresa;
+			}
+			set
+			{
+				if ((this._idEmpresa != value))
+				{
+					if (this._Empresa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidEmpresaChanging(value);
+					this.SendPropertyChanging();
+					this._idEmpresa = value;
+					this.SendPropertyChanged("idEmpresa");
+					this.OnidEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaRecursosHumanos", Storage="_Auditor", ThisKey="idAuditor", OtherKey="idAuditor", IsForeignKey=true)]
+		public Auditor Auditor
+		{
+			get
+			{
+				return this._Auditor.Entity;
+			}
+			set
+			{
+				Auditor previousValue = this._Auditor.Entity;
+				if (((previousValue != value) 
+							|| (this._Auditor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Auditor.Entity = null;
+						previousValue.AuditoriaRecursosHumanos.Remove(this);
+					}
+					this._Auditor.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaRecursosHumanos.Add(this);
+						this._idAuditor = value.idAuditor;
+					}
+					else
+					{
+						this._idAuditor = default(int);
+					}
+					this.SendPropertyChanged("Auditor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaRecursosHumanos", Storage="_Empresa", ThisKey="idEmpresa", OtherKey="idEmpresa", IsForeignKey=true)]
+		public Empresa Empresa
+		{
+			get
+			{
+				return this._Empresa.Entity;
+			}
+			set
+			{
+				Empresa previousValue = this._Empresa.Entity;
+				if (((previousValue != value) 
+							|| (this._Empresa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Empresa.Entity = null;
+						previousValue.AuditoriaRecursosHumanos.Remove(this);
+					}
+					this._Empresa.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaRecursosHumanos.Add(this);
+						this._idEmpresa = value.idEmpresa;
+					}
+					else
+					{
+						this._idEmpresa = default(int);
+					}
+					this.SendPropertyChanged("Empresa");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AuditoriaRecursosYReclutamiento")]
+	public partial class AuditoriaRecursosYReclutamiento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idAuditoriaRecursosYReclutamiento;
+		
+		private int _p1;
+		
+		private int _p2;
+		
+		private int _p3;
+		
+		private int _p4;
+		
+		private int _p5;
+		
+		private int _p6;
+		
+		private int _p7;
+		
+		private int _p8;
+		
+		private string _comentario;
+		
+		private int _idAuditor;
+		
+		private int _idEmpresa;
+		
+		private EntityRef<Auditor> _Auditor;
+		
+		private EntityRef<Empresa> _Empresa;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidAuditoriaRecursosYReclutamientoChanging(int value);
+    partial void OnidAuditoriaRecursosYReclutamientoChanged();
+    partial void Onp1Changing(int value);
+    partial void Onp1Changed();
+    partial void Onp2Changing(int value);
+    partial void Onp2Changed();
+    partial void Onp3Changing(int value);
+    partial void Onp3Changed();
+    partial void Onp4Changing(int value);
+    partial void Onp4Changed();
+    partial void Onp5Changing(int value);
+    partial void Onp5Changed();
+    partial void Onp6Changing(int value);
+    partial void Onp6Changed();
+    partial void Onp7Changing(int value);
+    partial void Onp7Changed();
+    partial void Onp8Changing(int value);
+    partial void Onp8Changed();
+    partial void OncomentarioChanging(string value);
+    partial void OncomentarioChanged();
+    partial void OnidAuditorChanging(int value);
+    partial void OnidAuditorChanged();
+    partial void OnidEmpresaChanging(int value);
+    partial void OnidEmpresaChanged();
+    #endregion
+		
+		public AuditoriaRecursosYReclutamiento()
+		{
+			this._Auditor = default(EntityRef<Auditor>);
+			this._Empresa = default(EntityRef<Empresa>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditoriaRecursosYReclutamiento", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idAuditoriaRecursosYReclutamiento
+		{
+			get
+			{
+				return this._idAuditoriaRecursosYReclutamiento;
+			}
+			set
+			{
+				if ((this._idAuditoriaRecursosYReclutamiento != value))
+				{
+					this.OnidAuditoriaRecursosYReclutamientoChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditoriaRecursosYReclutamiento = value;
+					this.SendPropertyChanged("idAuditoriaRecursosYReclutamiento");
+					this.OnidAuditoriaRecursosYReclutamientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p1", DbType="Int NOT NULL")]
+		public int p1
+		{
+			get
+			{
+				return this._p1;
+			}
+			set
+			{
+				if ((this._p1 != value))
+				{
+					this.Onp1Changing(value);
+					this.SendPropertyChanging();
+					this._p1 = value;
+					this.SendPropertyChanged("p1");
+					this.Onp1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p2", DbType="Int NOT NULL")]
+		public int p2
+		{
+			get
+			{
+				return this._p2;
+			}
+			set
+			{
+				if ((this._p2 != value))
+				{
+					this.Onp2Changing(value);
+					this.SendPropertyChanging();
+					this._p2 = value;
+					this.SendPropertyChanged("p2");
+					this.Onp2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p3", DbType="Int NOT NULL")]
+		public int p3
+		{
+			get
+			{
+				return this._p3;
+			}
+			set
+			{
+				if ((this._p3 != value))
+				{
+					this.Onp3Changing(value);
+					this.SendPropertyChanging();
+					this._p3 = value;
+					this.SendPropertyChanged("p3");
+					this.Onp3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p4", DbType="Int NOT NULL")]
+		public int p4
+		{
+			get
+			{
+				return this._p4;
+			}
+			set
+			{
+				if ((this._p4 != value))
+				{
+					this.Onp4Changing(value);
+					this.SendPropertyChanging();
+					this._p4 = value;
+					this.SendPropertyChanged("p4");
+					this.Onp4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p5", DbType="Int NOT NULL")]
+		public int p5
+		{
+			get
+			{
+				return this._p5;
+			}
+			set
+			{
+				if ((this._p5 != value))
+				{
+					this.Onp5Changing(value);
+					this.SendPropertyChanging();
+					this._p5 = value;
+					this.SendPropertyChanged("p5");
+					this.Onp5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p6", DbType="Int NOT NULL")]
+		public int p6
+		{
+			get
+			{
+				return this._p6;
+			}
+			set
+			{
+				if ((this._p6 != value))
+				{
+					this.Onp6Changing(value);
+					this.SendPropertyChanging();
+					this._p6 = value;
+					this.SendPropertyChanged("p6");
+					this.Onp6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p7", DbType="Int NOT NULL")]
+		public int p7
+		{
+			get
+			{
+				return this._p7;
+			}
+			set
+			{
+				if ((this._p7 != value))
+				{
+					this.Onp7Changing(value);
+					this.SendPropertyChanging();
+					this._p7 = value;
+					this.SendPropertyChanged("p7");
+					this.Onp7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p8", DbType="Int NOT NULL")]
+		public int p8
+		{
+			get
+			{
+				return this._p8;
+			}
+			set
+			{
+				if ((this._p8 != value))
+				{
+					this.Onp8Changing(value);
+					this.SendPropertyChanging();
+					this._p8 = value;
+					this.SendPropertyChanged("p8");
+					this.Onp8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comentario", DbType="VarChar(1000)")]
+		public string comentario
+		{
+			get
+			{
+				return this._comentario;
+			}
+			set
+			{
+				if ((this._comentario != value))
+				{
+					this.OncomentarioChanging(value);
+					this.SendPropertyChanging();
+					this._comentario = value;
+					this.SendPropertyChanged("comentario");
+					this.OncomentarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idAuditor", DbType="Int NOT NULL")]
+		public int idAuditor
+		{
+			get
+			{
+				return this._idAuditor;
+			}
+			set
+			{
+				if ((this._idAuditor != value))
+				{
+					if (this._Auditor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidAuditorChanging(value);
+					this.SendPropertyChanging();
+					this._idAuditor = value;
+					this.SendPropertyChanged("idAuditor");
+					this.OnidAuditorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpresa", DbType="Int NOT NULL")]
+		public int idEmpresa
+		{
+			get
+			{
+				return this._idEmpresa;
+			}
+			set
+			{
+				if ((this._idEmpresa != value))
+				{
+					if (this._Empresa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidEmpresaChanging(value);
+					this.SendPropertyChanging();
+					this._idEmpresa = value;
+					this.SendPropertyChanged("idEmpresa");
+					this.OnidEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Auditor_AuditoriaRecursosYReclutamiento", Storage="_Auditor", ThisKey="idAuditor", OtherKey="idAuditor", IsForeignKey=true)]
+		public Auditor Auditor
+		{
+			get
+			{
+				return this._Auditor.Entity;
+			}
+			set
+			{
+				Auditor previousValue = this._Auditor.Entity;
+				if (((previousValue != value) 
+							|| (this._Auditor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Auditor.Entity = null;
+						previousValue.AuditoriaRecursosYReclutamiento.Remove(this);
+					}
+					this._Auditor.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaRecursosYReclutamiento.Add(this);
+						this._idAuditor = value.idAuditor;
+					}
+					else
+					{
+						this._idAuditor = default(int);
+					}
+					this.SendPropertyChanged("Auditor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaRecursosYReclutamiento", Storage="_Empresa", ThisKey="idEmpresa", OtherKey="idEmpresa", IsForeignKey=true)]
+		public Empresa Empresa
+		{
+			get
+			{
+				return this._Empresa.Entity;
+			}
+			set
+			{
+				Empresa previousValue = this._Empresa.Entity;
+				if (((previousValue != value) 
+							|| (this._Empresa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Empresa.Entity = null;
+						previousValue.AuditoriaRecursosYReclutamiento.Remove(this);
+					}
+					this._Empresa.Entity = value;
+					if ((value != null))
+					{
+						value.AuditoriaRecursosYReclutamiento.Add(this);
+						this._idEmpresa = value.idEmpresa;
+					}
+					else
+					{
+						this._idEmpresa = default(int);
+					}
+					this.SendPropertyChanged("Empresa");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -504,6 +2161,12 @@ namespace Auditoria.Modelo
 		
 		private string _cpEmpresa;
 		
+		private EntitySet<AuditoriaCapacitacionYBienestar> _AuditoriaCapacitacionYBienestar;
+		
+		private EntitySet<AuditoriaRecursosHumanos> _AuditoriaRecursosHumanos;
+		
+		private EntitySet<AuditoriaRecursosYReclutamiento> _AuditoriaRecursosYReclutamiento;
+		
 		private EntitySet<AuditorXEmpresa> _AuditorXEmpresa;
 		
     #region Definiciones de métodos de extensibilidad
@@ -536,6 +2199,9 @@ namespace Auditoria.Modelo
 		
 		public Empresa()
 		{
+			this._AuditoriaCapacitacionYBienestar = new EntitySet<AuditoriaCapacitacionYBienestar>(new Action<AuditoriaCapacitacionYBienestar>(this.attach_AuditoriaCapacitacionYBienestar), new Action<AuditoriaCapacitacionYBienestar>(this.detach_AuditoriaCapacitacionYBienestar));
+			this._AuditoriaRecursosHumanos = new EntitySet<AuditoriaRecursosHumanos>(new Action<AuditoriaRecursosHumanos>(this.attach_AuditoriaRecursosHumanos), new Action<AuditoriaRecursosHumanos>(this.detach_AuditoriaRecursosHumanos));
+			this._AuditoriaRecursosYReclutamiento = new EntitySet<AuditoriaRecursosYReclutamiento>(new Action<AuditoriaRecursosYReclutamiento>(this.attach_AuditoriaRecursosYReclutamiento), new Action<AuditoriaRecursosYReclutamiento>(this.detach_AuditoriaRecursosYReclutamiento));
 			this._AuditorXEmpresa = new EntitySet<AuditorXEmpresa>(new Action<AuditorXEmpresa>(this.attach_AuditorXEmpresa), new Action<AuditorXEmpresa>(this.detach_AuditorXEmpresa));
 			OnCreated();
 		}
@@ -760,6 +2426,45 @@ namespace Auditoria.Modelo
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaCapacitacionYBienestar", Storage="_AuditoriaCapacitacionYBienestar", ThisKey="idEmpresa", OtherKey="idEmpresa")]
+		public EntitySet<AuditoriaCapacitacionYBienestar> AuditoriaCapacitacionYBienestar
+		{
+			get
+			{
+				return this._AuditoriaCapacitacionYBienestar;
+			}
+			set
+			{
+				this._AuditoriaCapacitacionYBienestar.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaRecursosHumanos", Storage="_AuditoriaRecursosHumanos", ThisKey="idEmpresa", OtherKey="idEmpresa")]
+		public EntitySet<AuditoriaRecursosHumanos> AuditoriaRecursosHumanos
+		{
+			get
+			{
+				return this._AuditoriaRecursosHumanos;
+			}
+			set
+			{
+				this._AuditoriaRecursosHumanos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditoriaRecursosYReclutamiento", Storage="_AuditoriaRecursosYReclutamiento", ThisKey="idEmpresa", OtherKey="idEmpresa")]
+		public EntitySet<AuditoriaRecursosYReclutamiento> AuditoriaRecursosYReclutamiento
+		{
+			get
+			{
+				return this._AuditoriaRecursosYReclutamiento;
+			}
+			set
+			{
+				this._AuditoriaRecursosYReclutamiento.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Empresa_AuditorXEmpresa", Storage="_AuditorXEmpresa", ThisKey="idEmpresa", OtherKey="idEmpresa")]
 		public EntitySet<AuditorXEmpresa> AuditorXEmpresa
 		{
@@ -793,6 +2498,42 @@ namespace Auditoria.Modelo
 			}
 		}
 		
+		private void attach_AuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = this;
+		}
+		
+		private void detach_AuditoriaCapacitacionYBienestar(AuditoriaCapacitacionYBienestar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = null;
+		}
+		
+		private void attach_AuditoriaRecursosHumanos(AuditoriaRecursosHumanos entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = this;
+		}
+		
+		private void detach_AuditoriaRecursosHumanos(AuditoriaRecursosHumanos entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = null;
+		}
+		
+		private void attach_AuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = this;
+		}
+		
+		private void detach_AuditoriaRecursosYReclutamiento(AuditoriaRecursosYReclutamiento entity)
+		{
+			this.SendPropertyChanging();
+			entity.Empresa = null;
+		}
+		
 		private void attach_AuditorXEmpresa(AuditorXEmpresa entity)
 		{
 			this.SendPropertyChanging();
@@ -803,388 +2544,6 @@ namespace Auditoria.Modelo
 		{
 			this.SendPropertyChanging();
 			entity.Empresa = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol")]
-	public partial class Rol : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idRol;
-		
-		private string _nombreRol;
-		
-		private EntitySet<Usuario> _Usuario;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidRolChanging(int value);
-    partial void OnidRolChanged();
-    partial void OnnombreRolChanging(string value);
-    partial void OnnombreRolChanged();
-    #endregion
-		
-		public Rol()
-		{
-			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idRol
-		{
-			get
-			{
-				return this._idRol;
-			}
-			set
-			{
-				if ((this._idRol != value))
-				{
-					this.OnidRolChanging(value);
-					this.SendPropertyChanging();
-					this._idRol = value;
-					this.SendPropertyChanged("idRol");
-					this.OnidRolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreRol", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string nombreRol
-		{
-			get
-			{
-				return this._nombreRol;
-			}
-			set
-			{
-				if ((this._nombreRol != value))
-				{
-					this.OnnombreRolChanging(value);
-					this.SendPropertyChanging();
-					this._nombreRol = value;
-					this.SendPropertyChanged("nombreRol");
-					this.OnnombreRolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Usuario", ThisKey="idRol", OtherKey="idRol")]
-		public EntitySet<Usuario> Usuario
-		{
-			get
-			{
-				return this._Usuario;
-			}
-			set
-			{
-				this._Usuario.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Usuario(Usuario entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rol = this;
-		}
-		
-		private void detach_Usuario(Usuario entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rol = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idUsuario;
-		
-		private string _nombreUsuario;
-		
-		private string _contrasenaUsuario;
-		
-		private int _idPersona;
-		
-		private int _idRol;
-		
-		private EntitySet<Auditor> _Auditor;
-		
-		private EntityRef<Rol> _Rol;
-		
-		private EntityRef<Persona> _Persona;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidUsuarioChanging(int value);
-    partial void OnidUsuarioChanged();
-    partial void OnnombreUsuarioChanging(string value);
-    partial void OnnombreUsuarioChanged();
-    partial void OncontrasenaUsuarioChanging(string value);
-    partial void OncontrasenaUsuarioChanged();
-    partial void OnidPersonaChanging(int value);
-    partial void OnidPersonaChanged();
-    partial void OnidRolChanging(int value);
-    partial void OnidRolChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			this._Auditor = new EntitySet<Auditor>(new Action<Auditor>(this.attach_Auditor), new Action<Auditor>(this.detach_Auditor));
-			this._Rol = default(EntityRef<Rol>);
-			this._Persona = default(EntityRef<Persona>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idUsuario
-		{
-			get
-			{
-				return this._idUsuario;
-			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this.OnidUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._idUsuario = value;
-					this.SendPropertyChanged("idUsuario");
-					this.OnidUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
-		public string nombreUsuario
-		{
-			get
-			{
-				return this._nombreUsuario;
-			}
-			set
-			{
-				if ((this._nombreUsuario != value))
-				{
-					this.OnnombreUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._nombreUsuario = value;
-					this.SendPropertyChanged("nombreUsuario");
-					this.OnnombreUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contrasenaUsuario", DbType="VarChar(300) NOT NULL", CanBeNull=false)]
-		public string contrasenaUsuario
-		{
-			get
-			{
-				return this._contrasenaUsuario;
-			}
-			set
-			{
-				if ((this._contrasenaUsuario != value))
-				{
-					this.OncontrasenaUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._contrasenaUsuario = value;
-					this.SendPropertyChanged("contrasenaUsuario");
-					this.OncontrasenaUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					if (this._Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidPersonaChanging(value);
-					this.SendPropertyChanging();
-					this._idPersona = value;
-					this.SendPropertyChanged("idPersona");
-					this.OnidPersonaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
-		public int idRol
-		{
-			get
-			{
-				return this._idRol;
-			}
-			set
-			{
-				if ((this._idRol != value))
-				{
-					if (this._Rol.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidRolChanging(value);
-					this.SendPropertyChanging();
-					this._idRol = value;
-					this.SendPropertyChanged("idRol");
-					this.OnidRolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Auditor", Storage="_Auditor", ThisKey="idUsuario", OtherKey="idUsuario")]
-		public EntitySet<Auditor> Auditor
-		{
-			get
-			{
-				return this._Auditor;
-			}
-			set
-			{
-				this._Auditor.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="idRol", OtherKey="idRol", IsForeignKey=true)]
-		public Rol Rol
-		{
-			get
-			{
-				return this._Rol.Entity;
-			}
-			set
-			{
-				Rol previousValue = this._Rol.Entity;
-				if (((previousValue != value) 
-							|| (this._Rol.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rol.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Rol.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._idRol = value.idRol;
-					}
-					else
-					{
-						this._idRol = default(int);
-					}
-					this.SendPropertyChanged("Rol");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="idPersona", OtherKey="idPersona", IsForeignKey=true)]
-		public Persona Persona
-		{
-			get
-			{
-				return this._Persona.Entity;
-			}
-			set
-			{
-				Persona previousValue = this._Persona.Entity;
-				if (((previousValue != value) 
-							|| (this._Persona.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Persona.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Persona.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._idPersona = value.idPersona;
-					}
-					else
-					{
-						this._idPersona = default(int);
-					}
-					this.SendPropertyChanged("Persona");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Auditor(Auditor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_Auditor(Auditor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
 		}
 	}
 	
@@ -1452,7 +2811,7 @@ namespace Auditoria.Modelo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perfilProfesional", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perfilProfesional", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
 		public string perfilProfesional
 		{
 			get
@@ -1515,6 +2874,120 @@ namespace Auditoria.Modelo
 		{
 			this.SendPropertyChanging();
 			entity.Persona = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol")]
+	public partial class Rol : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idRol;
+		
+		private string _nombreRol;
+		
+		private EntitySet<Usuario> _Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidRolChanging(int value);
+    partial void OnidRolChanged();
+    partial void OnnombreRolChanging(string value);
+    partial void OnnombreRolChanged();
+    #endregion
+		
+		public Rol()
+		{
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					this.OnidRolChanging(value);
+					this.SendPropertyChanging();
+					this._idRol = value;
+					this.SendPropertyChanged("idRol");
+					this.OnidRolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreRol", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string nombreRol
+		{
+			get
+			{
+				return this._nombreRol;
+			}
+			set
+			{
+				if ((this._nombreRol != value))
+				{
+					this.OnnombreRolChanging(value);
+					this.SendPropertyChanging();
+					this._nombreRol = value;
+					this.SendPropertyChanged("nombreRol");
+					this.OnnombreRolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Usuario", ThisKey="idRol", OtherKey="idRol")]
+		public EntitySet<Usuario> Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				this._Usuario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = this;
+		}
+		
+		private void detach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = null;
 		}
 	}
 }

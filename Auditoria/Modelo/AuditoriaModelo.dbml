@@ -1,11 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="semestralAuditoria" Class="AuditoriaModeloDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GVNOENM\MSSQLSERVEREDUAR;Initial Catalog=semestralAuditoria;Integrated Security=True" SettingsObjectName="Auditoria.Properties.Settings" SettingsPropertyName="semestralAuditoriaConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=semestralAuditoria;Integrated Security=True" SettingsObjectName="Auditoria.Properties.Settings" SettingsPropertyName="semestralAuditoriaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="contrasenaUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Auditor" Member="Auditor" ThisKey="idUsuario" OtherKey="idUsuario" Type="Auditor" />
+      <Association Name="Persona_Usuario" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Auditor" Member="Auditor">
     <Type Name="Auditor">
       <Column Name="idAuditor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Auditor_AuditoriaCapacitacionYBienestar" Member="AuditoriaCapacitacionYBienestar" ThisKey="idAuditor" OtherKey="idAuditor" Type="AuditoriaCapacitacionYBienestar" />
+      <Association Name="Auditor_AuditoriaRecursosHumanos" Member="AuditoriaRecursosHumanos" ThisKey="idAuditor" OtherKey="idAuditor" Type="AuditoriaRecursosHumanos" />
+      <Association Name="Auditor_AuditoriaRecursosYReclutamiento" Member="AuditoriaRecursosYReclutamiento" ThisKey="idAuditor" OtherKey="idAuditor" Type="AuditoriaRecursosYReclutamiento" />
       <Association Name="Auditor_AuditorXEmpresa" Member="AuditorXEmpresa" ThisKey="idAuditor" OtherKey="idAuditor" Type="AuditorXEmpresa" />
       <Association Name="Usuario_Auditor" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuditoriaCapacitacionYBienestar" Member="AuditoriaCapacitacionYBienestar">
+    <Type Name="AuditoriaCapacitacionYBienestar">
+      <Column Name="idAuditoriaCapacitacionYBienestar" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="p1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p4" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p5" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p6" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p7" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p8" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="idAuditor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idEmpresa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Auditor_AuditoriaCapacitacionYBienestar" Member="Auditor" ThisKey="idAuditor" OtherKey="idAuditor" Type="Auditor" IsForeignKey="true" />
+      <Association Name="Empresa_AuditoriaCapacitacionYBienestar" Member="Empresa" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="Empresa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuditoriaRecursosHumanos" Member="AuditoriaRecursosHumanos">
+    <Type Name="AuditoriaRecursosHumanos">
+      <Column Name="idAuditoriaRecursosHumanos" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="p1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p4" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p5" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p6" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p7" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p8" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p9" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p10" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="idAuditor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idEmpresa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Auditor_AuditoriaRecursosHumanos" Member="Auditor" ThisKey="idAuditor" OtherKey="idAuditor" Type="Auditor" IsForeignKey="true" />
+      <Association Name="Empresa_AuditoriaRecursosHumanos" Member="Empresa" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="Empresa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuditoriaRecursosYReclutamiento" Member="AuditoriaRecursosYReclutamiento">
+    <Type Name="AuditoriaRecursosYReclutamiento">
+      <Column Name="idAuditoriaRecursosYReclutamiento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="p1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p4" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p5" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p6" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p7" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p8" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="idAuditor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idEmpresa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Auditor_AuditoriaRecursosYReclutamiento" Member="Auditor" ThisKey="idAuditor" OtherKey="idAuditor" Type="Auditor" IsForeignKey="true" />
+      <Association Name="Empresa_AuditoriaRecursosYReclutamiento" Member="Empresa" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="Empresa" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.AuditorXEmpresa" Member="AuditorXEmpresa">
@@ -30,26 +101,10 @@
       <Column Name="calleNumeroEmpresa" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="municipioEmpresa" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="cpEmpresa" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Empresa_AuditoriaCapacitacionYBienestar" Member="AuditoriaCapacitacionYBienestar" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="AuditoriaCapacitacionYBienestar" />
+      <Association Name="Empresa_AuditoriaRecursosHumanos" Member="AuditoriaRecursosHumanos" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="AuditoriaRecursosHumanos" />
+      <Association Name="Empresa_AuditoriaRecursosYReclutamiento" Member="AuditoriaRecursosYReclutamiento" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="AuditoriaRecursosYReclutamiento" />
       <Association Name="Empresa_AuditorXEmpresa" Member="AuditorXEmpresa" ThisKey="idEmpresa" OtherKey="idEmpresa" Type="AuditorXEmpresa" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Rol" Member="Rol">
-    <Type Name="Rol">
-      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nombreRol" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="idRol" OtherKey="idRol" Type="Usuario" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Usuario" Member="Usuario">
-    <Type Name="Usuario">
-      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nombreUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
-      <Column Name="contrasenaUsuario" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
-      <Column Name="idPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Usuario_Auditor" Member="Auditor" ThisKey="idUsuario" OtherKey="idUsuario" Type="Auditor" />
-      <Association Name="Rol_Usuario" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
-      <Association Name="Persona_Usuario" Member="Persona" ThisKey="idPersona" OtherKey="idPersona" Type="Persona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Persona" Member="Persona">
@@ -64,8 +119,15 @@
       <Column Name="numeroCallePersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="coloniaPersona" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="entidadFederativa" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="perfilProfesional" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="perfilProfesional" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Association Name="Persona_Usuario" Member="Usuario" ThisKey="idPersona" OtherKey="idPersona" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rol">
+    <Type Name="Rol">
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreRol" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="idRol" OtherKey="idRol" Type="Usuario" />
     </Type>
   </Table>
 </Database>

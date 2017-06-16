@@ -1,76 +1,136 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.625" name="AuditoriaModelo">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 13" name="AuditoriaModelo">
   <DataContextMoniker Name="/AuditoriaModeloDataContext" />
   <nestedChildShapes>
-    <classShape Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" absoluteBounds="6.25, 1.25, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/AuditoriaModeloDataContext/Auditor" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d1db1ca1-0ea9-41fc-93f2-ac214d1f6a99" absoluteBounds="6.265, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" absoluteBounds="9, 1.125, 2, 1.3862939453124998">
-      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditorXEmpresa" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7d229ebb-ab3a-434a-9f4e-0135d9e2d31e" absoluteBounds="9.015, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a373a57b-4dfe-4691-838e-1d0f68c1d8c0" absoluteBounds="6.25, 5.5, 2, 2.9247054036458326">
-      <DataClassMoniker Name="/AuditoriaModeloDataContext/Empresa" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b70b32a5-f166-436d-bb57-269d968956f3" absoluteBounds="6.265, 5.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b70aaf96-5c7b-43cc-9a5a-1199a9413037" absoluteBounds="0.75, 1.25, 2, 1.1939925130208338">
-      <DataClassMoniker Name="/AuditoriaModeloDataContext/Rol" />
-      <nestedChildShapes>
-        <elementListCompartment Id="36403dfb-4acd-47df-9b66-26b8b2919691" absoluteBounds="0.765, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a99fa03b-677d-4584-9163-408ee4440fad" absoluteBounds="3.5, 0.875, 2, 1.7708968098958333">
+    <classShape Id="41370991-aafb-4261-9afd-760601f3fc85" absoluteBounds="3.5, 7.25, 2, 1.7708968098958335">
       <DataClassMoniker Name="/AuditoriaModeloDataContext/Usuario" />
       <nestedChildShapes>
-        <elementListCompartment Id="ee184c24-ac0b-4365-a635-c927d9fd18ed" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="26f97981-f673-4b09-860f-95a7179362b4" absoluteBounds="3.515, 7.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 1.84699625651042); (9 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditorXEmpresa" />
-      <nodes>
-        <classShapeMoniker Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" />
-        <classShapeMoniker Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 6.96235270182292); (10 : 6.96235270182292); (10 : 2.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditorXEmpresa" />
-      <nodes>
-        <classShapeMoniker Id="a373a57b-4dfe-4691-838e-1d0f68c1d8c0" />
-        <classShapeMoniker Id="d7d530bd-6ed4-4562-accc-c3c0586f001a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 1.84699625651042); (6.25 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/AuditoriaModeloDataContext/Usuario/Usuario_Auditor" />
-      <nodes>
-        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
-        <classShapeMoniker Id="1f31c3d1-4dd4-4ed0-be3d-8c6610e8f6b0" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (2.82291666666667 : 1.84699625651042 : JumpStart); (2.98958333333333 : 1.84699625651042 : JumpEnd); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/AuditoriaModeloDataContext/Rol/Rol_Usuario" />
-      <nodes>
-        <classShapeMoniker Id="b70aaf96-5c7b-43cc-9a5a-1199a9413037" />
-        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="8a3ade5d-ab5e-483a-ad71-118926636b60" absoluteBounds="1, 4.25, 2, 2.9247054036458331">
+    <classShape Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" absoluteBounds="6.25, 7.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Auditor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1204ba1b-b808-42e6-9e86-55a262b68285" absoluteBounds="6.265, 8.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="61fd1060-07bb-489a-8119-969d309ad752" absoluteBounds="9, 3.625, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditoriaCapacitacionYBienestar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a6433573-9672-4376-9990-0f0d1b0b2ebd" absoluteBounds="9.015, 4.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c7009a3-c6c5-4f17-96dc-5f180d72eb65" absoluteBounds="12, 6.375, 2, 3.5016097005208335">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditoriaRecursosHumanos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b62961d4-84c1-4e6b-8a7e-c7b073f46c4a" absoluteBounds="12.015, 6.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b27c4b0-a5b4-4a8d-ad3d-a5f9477fe4fb" absoluteBounds="9, 9.625, 2, 3.1170068359374987">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditoriaRecursosYReclutamiento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b8892c6-db2f-4d2d-be4c-f5a945d9e477" absoluteBounds="9.015, 10.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f55aa82-43e6-4a9b-8fdc-ff8d3c4208a1" absoluteBounds="9, 7.5, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/AuditorXEmpresa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b26c490-6528-4f73-b088-055c5950fde2" absoluteBounds="9.015, 7.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95ba58b5-6ff6-4224-92d5-d0d1eed190f4" absoluteBounds="6.25, 3.75, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Empresa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38a826fc-5061-43b0-938c-e0a379e30eca" absoluteBounds="6.265, 4.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0d596419-4b39-4b80-9cdd-dc632e06ec8b" absoluteBounds="0.75, 3.75, 2, 2.9247054036458326">
       <DataClassMoniker Name="/AuditoriaModeloDataContext/Persona" />
       <nestedChildShapes>
-        <elementListCompartment Id="888dcfd8-b137-46be-8538-9090a9fcabfe" absoluteBounds="1.0150000000000001, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3c827c13-3a75-44fe-a1a6-7d1fd8ad0b26" absoluteBounds="0.765, 4.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.90625 : 4.25); (2.90625 : 1.03125); (3.5 : 1.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="9e23d425-54ef-4504-824c-609d056a5dcb" absoluteBounds="0.75, 7.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AuditoriaModeloDataContext/Rol" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0472aa4-ee3b-463c-b0f6-78c68670d2cb" absoluteBounds="0.765, 8.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 8.22199625651042); (6.25 : 8.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Usuario/Usuario_Auditor" />
+      <nodes>
+        <classShapeMoniker Id="41370991-aafb-4261-9afd-760601f3fc85" />
+        <classShapeMoniker Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 7.62591745577925); (8.625 : 7.25091745577925); (8.625 : 5.18350341796875); (9 : 5.18350341796875)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditoriaCapacitacionYBienestar" />
+      <nodes>
+        <classShapeMoniker Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" />
+        <classShapeMoniker Id="61fd1060-07bb-489a-8119-969d309ad752" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 8.81899251302083); (7.25 : 9.25564697265625); (7.69791916666667 : 9.25564697265625 : JumpStart); (7.86458583333333 : 9.25564697265625 : JumpEnd); (8.72916666666667 : 9.25564697265625 : JumpStart); (8.89583333333333 : 9.25564697265625 : JumpEnd); (12 : 9.25564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditoriaRecursosHumanos" />
+      <nodes>
+        <classShapeMoniker Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" />
+        <classShapeMoniker Id="7c7009a3-c6c5-4f17-96dc-5f180d72eb65" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.7812525 : 8.81899251302083); (7.7812525 : 11.1835034179687); (9 : 11.1835034179687)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditoriaRecursosYReclutamiento" />
+      <nodes>
+        <classShapeMoniker Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" />
+        <classShapeMoniker Id="3b27c4b0-a5b4-4a8d-ad3d-a5f9477fe4fb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 8.25370748440004); (8.72916666666667 : 8.25370748440004 : JumpStart); (8.89583333333333 : 8.25370748440004 : JumpEnd); (9 : 8.25370748440004)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Auditor/Auditor_AuditorXEmpresa" />
+      <nodes>
+        <classShapeMoniker Id="ad6fa681-476b-4d38-ae75-0d4d5be4451a" />
+        <classShapeMoniker Id="7f55aa82-43e6-4a9b-8fdc-ff8d3c4208a1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 5.99160441080729); (8.54166666666667 : 5.99160441080729 : JumpStart); (8.70833333333333 : 5.99160441080729 : JumpEnd); (9 : 5.99160441080729)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditoriaCapacitacionYBienestar" />
+      <nodes>
+        <classShapeMoniker Id="95ba58b5-6ff6-4224-92d5-d0d1eed190f4" />
+        <classShapeMoniker Id="61fd1060-07bb-489a-8119-969d309ad752" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 6.67470540364583); (7.25 : 7.25); (8.60416666666667 : 7.25 : JumpStart); (8.77083333333333 : 7.25 : JumpEnd); (11.625 : 7.25); (11.625 : 7.78407148632813); (12 : 7.78407148632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditoriaRecursosHumanos" />
+      <nodes>
+        <classShapeMoniker Id="95ba58b5-6ff6-4224-92d5-d0d1eed190f4" />
+        <classShapeMoniker Id="7c7009a3-c6c5-4f17-96dc-5f180d72eb65" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.21769230769231 : 6.67470540364583); (8.56607443490112 : 7.02308753085464 : JumpStart); (8.74642556509888 : 7.2034386610524 : JumpEnd); (8.8125 : 7.26951309595352); (8.8125 : 10.3729997089844); (9 : 10.3729997089844)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditoriaRecursosYReclutamiento" />
+      <nodes>
+        <classShapeMoniker Id="95ba58b5-6ff6-4224-92d5-d0d1eed190f4" />
+        <classShapeMoniker Id="3b27c4b0-a5b4-4a8d-ad3d-a5f9477fe4fb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 6.57931978826122); (8.56607443490112 : 6.89539422316234 : JumpStart); (8.68392556509888 : 7.0132453533601 : JumpEnd); (8.6875 : 7.01681978826122); (8.6875 : 7.84560174220002); (8.72916666666667 : 7.84560174220002 : JumpStart); (8.89583333333333 : 7.84560174220002 : JumpEnd); (9 : 7.84560174220002)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Empresa/Empresa_AuditorXEmpresa" />
+      <nodes>
+        <classShapeMoniker Id="95ba58b5-6ff6-4224-92d5-d0d1eed190f4" />
+        <classShapeMoniker Id="7f55aa82-43e6-4a9b-8fdc-ff8d3c4208a1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.21235270182292); (4.5 : 5.21235270182292); (4.5 : 7.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AuditoriaModeloDataContext/Persona/Persona_Usuario" />
       <nodes>
-        <classShapeMoniker Id="8a3ade5d-ab5e-483a-ad71-118926636b60" />
-        <classShapeMoniker Id="a99fa03b-677d-4584-9163-408ee4440fad" />
+        <classShapeMoniker Id="0d596419-4b39-4b80-9cdd-dc632e06ec8b" />
+        <classShapeMoniker Id="41370991-aafb-4261-9afd-760601f3fc85" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.22199625651042); (3.5 : 8.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AuditoriaModeloDataContext/Rol/Rol_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="9e23d425-54ef-4504-824c-609d056a5dcb" />
+        <classShapeMoniker Id="41370991-aafb-4261-9afd-760601f3fc85" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
