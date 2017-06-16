@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -305,7 +307,8 @@ namespace Auditoria
                     chart1.Series.Clear();
                     var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
-                        Name = "Series1",
+                        Enabled = true,
+                        Name = "Puntaje Maximo",
                         Color = System.Drawing.Color.Blue,
                         IsVisibleInLegend = false,
                         IsXValueIndexed = true,
@@ -313,7 +316,8 @@ namespace Auditoria
                     };
                     var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
                     {
-                        Name = "Series2",
+                        Enabled = true,
+                        Name = "Puntaje Obtenido",
                         Color = System.Drawing.Color.Red,
                         IsVisibleInLegend = false,
                         IsXValueIndexed = true,
@@ -380,6 +384,43 @@ namespace Auditoria
             VincularAuditor form = new VincularAuditor();
             form.Show();
             this.Visible = false;
+        }
+        private void guardarCaptura( String nombre)
+        {
+
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                Rectangle bounds = this.Bounds;
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                    }
+                    //      bitmap.Save("test.jpg", ImageFormat.Jpeg);
+
+                    using (FileStream fs = new FileStream("C:\\Users\\Eduardo\\Desktop\\Graficas/" + nombre + ".Jpeg", FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        bitmap.Save(memory, ImageFormat.Jpeg);
+                        byte[] bytes = memory.ToArray();
+                        fs.Write(bytes, 0, bytes.Length);
+                        MessageBox.Show("Imagen Guardada Correctamente.");
+                    }
+                }
+
+
+            }
+        }
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGrafica_Click(object sender, EventArgs e)
+        { 
+
+            guardarCaptura( txtTitulo.Text);
         }
     }
 }
