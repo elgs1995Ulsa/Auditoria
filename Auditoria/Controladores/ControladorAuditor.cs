@@ -66,7 +66,7 @@ namespace Auditoria.Controladores
                     p8 = p8,
                     p9 = p9,
                     p10 = p10,
-                    comentario = comentario,
+                    comentario = DateTime.Now.ToShortDateString() + " - " + comentario,
                     idAuditor = auditorActivo.idAuditor,
                     idEmpresa = empresaActiva.idEmpresa
                 };
@@ -109,7 +109,7 @@ namespace Auditoria.Controladores
                     p6 = p6,
                     p7 = p7,
                     p8 = p8,
-                    comentario = comentario,
+                    comentario = DateTime.Now.ToShortDateString() + " - " + comentario,
                     idAuditor = auditorActivo.idAuditor,
                     idEmpresa = empresaActiva.idEmpresa
                 };
@@ -153,7 +153,7 @@ namespace Auditoria.Controladores
                     p6 = p6,
                     p7 = p7,
                     p8 = p8,
-                    comentario = comentario,
+                    comentario = DateTime.Now.ToShortDateString() + " - " + comentario,
                     idAuditor = auditorActivo.idAuditor,
                     idEmpresa = empresaActiva.idEmpresa
                 };
