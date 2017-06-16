@@ -54,7 +54,7 @@
             this.lblPuntaje.AutoSize = true;
             this.lblPuntaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPuntaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblPuntaje.Location = new System.Drawing.Point(155, 91);
+            this.lblPuntaje.Location = new System.Drawing.Point(153, 60);
             this.lblPuntaje.Name = "lblPuntaje";
             this.lblPuntaje.Size = new System.Drawing.Size(57, 39);
             this.lblPuntaje.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(208, 91);
+            this.label2.Location = new System.Drawing.Point(206, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 39);
             this.label2.TabIndex = 2;
@@ -76,7 +76,7 @@
             this.lblMaximo.AutoSize = true;
             this.lblMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblMaximo.Location = new System.Drawing.Point(231, 91);
+            this.lblMaximo.Location = new System.Drawing.Point(229, 60);
             this.lblMaximo.Name = "lblMaximo";
             this.lblMaximo.Size = new System.Drawing.Size(57, 39);
             this.lblMaximo.TabIndex = 3;
@@ -85,13 +85,14 @@
             // 
             // cmdAceptar
             // 
+            this.cmdAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.cmdAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdAceptar.Location = new System.Drawing.Point(152, 164);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(139, 38);
             this.cmdAceptar.TabIndex = 4;
             this.cmdAceptar.Text = "Aceptar";
-            this.cmdAceptar.UseVisualStyleBackColor = true;
+            this.cmdAceptar.UseVisualStyleBackColor = false;
             this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
             // lblEn
@@ -131,7 +132,7 @@
             this.lblPorcentaje.AutoSize = true;
             this.lblPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPorcentaje.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.lblPorcentaje.Location = new System.Drawing.Point(197, 135);
+            this.lblPorcentaje.Location = new System.Drawing.Point(195, 104);
             this.lblPorcentaje.Name = "lblPorcentaje";
             this.lblPorcentaje.Size = new System.Drawing.Size(49, 20);
             this.lblPorcentaje.TabIndex = 8;

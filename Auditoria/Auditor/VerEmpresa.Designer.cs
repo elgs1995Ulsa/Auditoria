@@ -114,21 +114,23 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 20);
+            this.label1.Size = new System.Drawing.Size(293, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Empresas Para Auditar";
             // 
             // botonAuditar
             // 
+            this.botonAuditar.BackColor = System.Drawing.Color.LawnGreen;
             this.botonAuditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonAuditar.Location = new System.Drawing.Point(557, 235);
+            this.botonAuditar.Location = new System.Drawing.Point(283, 233);
             this.botonAuditar.Name = "botonAuditar";
-            this.botonAuditar.Size = new System.Drawing.Size(123, 37);
+            this.botonAuditar.Size = new System.Drawing.Size(131, 48);
             this.botonAuditar.TabIndex = 1;
             this.botonAuditar.Text = "AUDITAR";
-            this.botonAuditar.UseVisualStyleBackColor = true;
+            this.botonAuditar.UseVisualStyleBackColor = false;
             this.botonAuditar.Click += new System.EventHandler(this.botonAuditar_Click);
             // 
             // dataGridView1

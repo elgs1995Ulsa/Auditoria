@@ -85,13 +85,14 @@
             // 
             // cmdAceptar
             // 
+            this.cmdAceptar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmdAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdAceptar.Location = new System.Drawing.Point(110, 200);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(117, 32);
             this.cmdAceptar.TabIndex = 4;
             this.cmdAceptar.Text = "Aceptar";
-            this.cmdAceptar.UseVisualStyleBackColor = true;
+            this.cmdAceptar.UseVisualStyleBackColor = false;
             this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
             // lblPorcentaje
@@ -159,6 +160,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EstadisticaAngel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estadistica";
             this.Load += new System.EventHandler(this.Estadistica_Load);
             this.ResumeLayout(false);

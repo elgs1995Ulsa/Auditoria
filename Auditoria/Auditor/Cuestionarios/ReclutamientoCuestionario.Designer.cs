@@ -305,13 +305,14 @@
             // 
             // cmdGuardar
             // 
+            this.cmdGuardar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.cmdGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdGuardar.Location = new System.Drawing.Point(549, 475);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(184, 39);
             this.cmdGuardar.TabIndex = 50;
             this.cmdGuardar.Text = "Guardar";
-            this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.UseVisualStyleBackColor = false;
             this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
             // 
             // ReclutamientoCuestionario

@@ -36,6 +36,7 @@
             this.registrarAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verAuditoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vincularAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,7 @@
             this.personaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.semestralAuditoriaDataSet = new Auditoria.semestralAuditoriaDataSet();
             this.personaTableAdapter = new Auditoria.semestralAuditoriaDataSetTableAdapters.PersonaTableAdapter();
-            this.vincularAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource)).BeginInit();
@@ -121,6 +122,13 @@
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
             this.estadisticasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasToolStripMenuItem_Click);
             // 
+            // vincularAuditorToolStripMenuItem
+            // 
+            this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
+            this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
+            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
+            // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -147,7 +155,7 @@
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
@@ -156,6 +164,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombresPersonaDataGridViewTextBoxColumn,
@@ -169,7 +178,7 @@
             this.entidadFederativaDataGridViewTextBoxColumn,
             this.perfilProfesionalDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.personaBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 73);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 109);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(751, 150);
             this.dataGridView1.TabIndex = 2;
@@ -248,21 +257,27 @@
             // 
             this.personaTableAdapter.ClearBeforeFill = true;
             // 
-            // vincularAuditorToolStripMenuItem
+            // label1
             // 
-            this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
-            this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
-            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 31);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Ver Auditores:";
             // 
             // VerAuditores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(811, 322);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "VerAuditores";
+            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerAuditores";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerAuditores_FormClosed);
@@ -305,5 +320,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn entidadFederativaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn perfilProfesionalDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem vincularAuditorToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -43,13 +43,16 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxAuditor
             // 
             this.comboBoxAuditor.FormattingEnabled = true;
-            this.comboBoxAuditor.Location = new System.Drawing.Point(49, 94);
+            this.comboBoxAuditor.Location = new System.Drawing.Point(46, 113);
             this.comboBoxAuditor.Name = "comboBoxAuditor";
             this.comboBoxAuditor.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAuditor.TabIndex = 0;
@@ -57,19 +60,23 @@
             // comboBoxEmpresa
             // 
             this.comboBoxEmpresa.FormattingEnabled = true;
-            this.comboBoxEmpresa.Location = new System.Drawing.Point(207, 94);
+            this.comboBoxEmpresa.Location = new System.Drawing.Point(204, 113);
             this.comboBoxEmpresa.Name = "comboBoxEmpresa";
             this.comboBoxEmpresa.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEmpresa.TabIndex = 1;
             // 
             // btnAsignar
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(372, 92);
+            this.btnAsignar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAsignar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAsignar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAsignar.Location = new System.Drawing.Point(364, 85);
             this.btnAsignar.Name = "btnAsignar";
-            this.btnAsignar.Size = new System.Drawing.Size(75, 23);
+            this.btnAsignar.Size = new System.Drawing.Size(83, 52);
             this.btnAsignar.TabIndex = 2;
             this.btnAsignar.Text = "Asignar";
-            this.btnAsignar.UseVisualStyleBackColor = true;
+            this.btnAsignar.UseVisualStyleBackColor = false;
             this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
             // 
             // menuStrip1
@@ -102,37 +109,42 @@
             this.datosDeLaEmpresaToolStripMenuItem.Name = "datosDeLaEmpresaToolStripMenuItem";
             this.datosDeLaEmpresaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.datosDeLaEmpresaToolStripMenuItem.Text = "Registrar Empresa";
-            this.datosDeLaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.datosDeLaEmpresaToolStripMenuItem_Click);
+            this.datosDeLaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.datosDeLaEmpresaToolStripMenuItem_Click_1);
             // 
             // verEmpresasToolStripMenuItem
             // 
             this.verEmpresasToolStripMenuItem.Name = "verEmpresasToolStripMenuItem";
             this.verEmpresasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.verEmpresasToolStripMenuItem.Text = "Ver Empresas";
+            this.verEmpresasToolStripMenuItem.Click += new System.EventHandler(this.verEmpresasToolStripMenuItem_Click);
             // 
             // registrarAuditorToolStripMenuItem
             // 
             this.registrarAuditorToolStripMenuItem.Name = "registrarAuditorToolStripMenuItem";
             this.registrarAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.registrarAuditorToolStripMenuItem.Text = "Registrar Auditor";
+            this.registrarAuditorToolStripMenuItem.Click += new System.EventHandler(this.registrarAuditorToolStripMenuItem_Click);
             // 
             // verAuditoresToolStripMenuItem
             // 
             this.verAuditoresToolStripMenuItem.Name = "verAuditoresToolStripMenuItem";
             this.verAuditoresToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.verAuditoresToolStripMenuItem.Text = "Ver Auditores";
+            this.verAuditoresToolStripMenuItem.Click += new System.EventHandler(this.verAuditoresToolStripMenuItem_Click);
             // 
             // estadisticasToolStripMenuItem
             // 
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
+            this.estadisticasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasToolStripMenuItem_Click);
             // 
             // vincularAuditorToolStripMenuItem
             // 
             this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
             this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
+            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -145,8 +157,9 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
             // cerrarSesionToolStripMenuItem
             // 
@@ -159,20 +172,56 @@
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar Sesion";
+            this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(75, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Auditor:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(232, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Empresa:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(105, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 25);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Asignar Auditor a Empresa";
             // 
             // VincularAuditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 263);
+            this.ClientSize = new System.Drawing.Size(510, 173);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.comboBoxEmpresa);
             this.Controls.Add(this.comboBoxAuditor);
             this.Name = "VincularAuditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VincularAuditor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VincularAuditor_FormClosed);
             this.Load += new System.EventHandler(this.VincularAuditor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -198,5 +247,8 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

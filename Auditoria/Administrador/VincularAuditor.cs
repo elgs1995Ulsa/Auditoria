@@ -49,59 +49,77 @@ namespace Auditoria.Administrador
             }
         }
 
-        private void verEmpresasToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            VerEmpresas form = new VerEmpresas();
-            form.Show();
-            this.Visible = false;
-        }
 
-        private void registrarAuditorToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void cerrarAplicacion(FormClosedEventArgs e)
         {
-            AltaAuditor form = new AltaAuditor();
-            form.Show();
-            this.Visible = false;
-        }
 
-        private void verAuditoresToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            VerAuditores form = new VerAuditores();
-            form.Show();
-            this.Visible = false;
-        }
-
-        private void estadisticasToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            Estadisticas form = new Estadisticas();
-            form.Show();
-            this.Visible = false;
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
 
 
-        private void ayudaToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            Ayuda form = new Ayuda();
-            form.Show();
-            this.Visible = false;
-        }
 
-        private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Application.OpenForms["IniciarSesion"].Visible = true;
-            this.Visible = false;
-            this.Dispose();
-        }
-
-        private void datosDeLaEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void datosDeLaEmpresaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             DatosDeLaEmpresa form = new DatosDeLaEmpresa();
             form.Show();
             this.Visible = false;
         }
 
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void verEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            VerEmpresas form = new VerEmpresas();
+            form.Show();
+            this.Visible = false;
+        }
 
+        private void registrarAuditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaAuditor form = new AltaAuditor();
+            form.Show();
+            this.Visible = false;
+        }
+
+        private void verAuditoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VerAuditores form = new VerAuditores();
+            form.Show();
+            this.Visible = false;
+        }
+
+        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Estadisticas form = new Estadisticas();
+            form.Show();
+            this.Visible = false;
+        }
+
+        private void vincularAuditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VincularAuditor form = new VincularAuditor();
+            form.Show();
+            this.Visible = false;
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ayuda form = new Ayuda();
+            form.Show();
+            this.Visible = false;
+        }
+
+        private void cerrarSesionToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            Application.OpenForms["IniciarSesion"].Visible = true;
+            this.Visible = false;
+            this.Dispose();
+        }
+
+        private void VincularAuditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cerrarAplicacion(e);
         }
     }
 }
