@@ -35,6 +35,52 @@ namespace Auditoria.Controladores
             return listaEmpresas;
         }
 
+        public static List<AuditoriaRecursosHumanos> seleccionarAuditoriaRecursosHumanos()
+        {
+            List<AuditoriaRecursosHumanos> lista = new List<AuditoriaRecursosHumanos>();
+
+            try
+            {
+                AuditoriaModeloDataContext contexto = new AuditoriaModeloDataContext();
+
+                lista = contexto.AuditoriaRecursosHumanos.Where(a => a.idAuditor == auditorActivo.idAuditor && a.idEmpresa == empresaActiva.idEmpresa).ToList();
+            }
+            catch (Exception) { }
+
+            return lista;
+        }
+
+        public static List<AuditoriaCapacitacionYBienestar> seleccionarAuditoriaCapacitacionYBienestar()
+        {
+            List<AuditoriaCapacitacionYBienestar> lista = new List<AuditoriaCapacitacionYBienestar>();
+
+            try
+            {
+                AuditoriaModeloDataContext contexto = new AuditoriaModeloDataContext();
+
+                lista = contexto.AuditoriaCapacitacionYBienestar.Where(a => a.idAuditor == auditorActivo.idAuditor && a.idEmpresa == empresaActiva.idEmpresa).ToList();
+            }
+            catch (Exception) { }
+
+            return lista;
+        }
+
+        public static List<AuditoriaRecursosYReclutamiento> seleccionarAuditoriaRecursosYReclutamiento()
+        {
+            List<AuditoriaRecursosYReclutamiento> lista = new List<AuditoriaRecursosYReclutamiento>();
+
+            try
+            {
+                AuditoriaModeloDataContext contexto = new AuditoriaModeloDataContext();
+
+                lista = contexto.AuditoriaRecursosYReclutamiento.Where(a => a.idAuditor == auditorActivo.idAuditor && a.idEmpresa == empresaActiva.idEmpresa).ToList();
+            }
+            catch (Exception) { }
+
+            return lista;
+        }
+
+        // INSERTS
         public static bool insertarCuestionarioGeneral(
             int p1,
             int p2,

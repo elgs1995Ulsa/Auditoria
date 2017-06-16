@@ -42,6 +42,11 @@
             this.relacionesLaborales = new System.Windows.Forms.PictureBox();
             this.recursosInformaticos = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblEstadisticaRI = new System.Windows.Forms.Label();
+            this.lblEstadisticaRL = new System.Windows.Forms.Label();
+            this.lblEstadisticaPR = new System.Windows.Forms.Label();
+            this.lblEstadisticaCB = new System.Windows.Forms.Label();
+            this.lblEstadisticaCG = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -151,7 +156,7 @@
             // relacionesLaborales
             // 
             this.relacionesLaborales.Image = ((System.Drawing.Image)(resources.GetObject("relacionesLaborales.Image")));
-            this.relacionesLaborales.Location = new System.Drawing.Point(80, 258);
+            this.relacionesLaborales.Location = new System.Drawing.Point(80, 271);
             this.relacionesLaborales.Name = "relacionesLaborales";
             this.relacionesLaborales.Size = new System.Drawing.Size(157, 115);
             this.relacionesLaborales.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -162,7 +167,7 @@
             // recursosInformaticos
             // 
             this.recursosInformaticos.Image = ((System.Drawing.Image)(resources.GetObject("recursosInformaticos.Image")));
-            this.recursosInformaticos.Location = new System.Drawing.Point(517, 258);
+            this.recursosInformaticos.Location = new System.Drawing.Point(517, 282);
             this.recursosInformaticos.Name = "recursosInformaticos";
             this.recursosInformaticos.Size = new System.Drawing.Size(127, 115);
             this.recursosInformaticos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,6 +177,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblEstadisticaRI);
+            this.panel1.Controls.Add(this.lblEstadisticaRL);
+            this.panel1.Controls.Add(this.lblEstadisticaPR);
+            this.panel1.Controls.Add(this.lblEstadisticaCB);
+            this.panel1.Controls.Add(this.lblEstadisticaCG);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -188,11 +198,69 @@
             this.panel1.Size = new System.Drawing.Size(717, 455);
             this.panel1.TabIndex = 12;
             // 
+            // lblEstadisticaRI
+            // 
+            this.lblEstadisticaRI.AutoSize = true;
+            this.lblEstadisticaRI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadisticaRI.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblEstadisticaRI.Location = new System.Drawing.Point(536, 429);
+            this.lblEstadisticaRI.Name = "lblEstadisticaRI";
+            this.lblEstadisticaRI.Size = new System.Drawing.Size(88, 18);
+            this.lblEstadisticaRI.TabIndex = 23;
+            this.lblEstadisticaRI.Text = "Estadísticas";
+            // 
+            // lblEstadisticaRL
+            // 
+            this.lblEstadisticaRL.AutoSize = true;
+            this.lblEstadisticaRL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadisticaRL.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblEstadisticaRL.Location = new System.Drawing.Point(102, 429);
+            this.lblEstadisticaRL.Name = "lblEstadisticaRL";
+            this.lblEstadisticaRL.Size = new System.Drawing.Size(88, 18);
+            this.lblEstadisticaRL.TabIndex = 22;
+            this.lblEstadisticaRL.Text = "Estadísticas";
+            // 
+            // lblEstadisticaPR
+            // 
+            this.lblEstadisticaPR.AutoSize = true;
+            this.lblEstadisticaPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadisticaPR.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblEstadisticaPR.Location = new System.Drawing.Point(531, 241);
+            this.lblEstadisticaPR.Name = "lblEstadisticaPR";
+            this.lblEstadisticaPR.Size = new System.Drawing.Size(88, 18);
+            this.lblEstadisticaPR.TabIndex = 21;
+            this.lblEstadisticaPR.Text = "Estadísticas";
+            this.lblEstadisticaPR.Click += new System.EventHandler(this.lblEstadisticaPR_Click);
+            // 
+            // lblEstadisticaCB
+            // 
+            this.lblEstadisticaCB.AutoSize = true;
+            this.lblEstadisticaCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadisticaCB.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblEstadisticaCB.Location = new System.Drawing.Point(328, 240);
+            this.lblEstadisticaCB.Name = "lblEstadisticaCB";
+            this.lblEstadisticaCB.Size = new System.Drawing.Size(88, 18);
+            this.lblEstadisticaCB.TabIndex = 20;
+            this.lblEstadisticaCB.Text = "Estadísticas";
+            this.lblEstadisticaCB.Click += new System.EventHandler(this.lblEstadisticaCB_Click);
+            // 
+            // lblEstadisticaCG
+            // 
+            this.lblEstadisticaCG.AutoSize = true;
+            this.lblEstadisticaCG.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadisticaCG.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblEstadisticaCG.Location = new System.Drawing.Point(116, 226);
+            this.lblEstadisticaCG.Name = "lblEstadisticaCG";
+            this.lblEstadisticaCG.Size = new System.Drawing.Size(88, 18);
+            this.lblEstadisticaCG.TabIndex = 19;
+            this.lblEstadisticaCG.Text = "Estadísticas";
+            this.lblEstadisticaCG.Click += new System.EventHandler(this.lblEstadisticaCG_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(484, 392);
+            this.label7.Location = new System.Drawing.Point(484, 405);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(195, 24);
             this.label7.TabIndex = 18;
@@ -202,7 +270,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(61, 392);
+            this.label6.Location = new System.Drawing.Point(61, 405);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(191, 24);
             this.label6.TabIndex = 17;
@@ -256,7 +324,7 @@
             this.lblEmpresa.AutoSize = true;
             this.lblEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblEmpresa.Location = new System.Drawing.Point(15, 25);
+            this.lblEmpresa.Location = new System.Drawing.Point(20, 28);
             this.lblEmpresa.Name = "lblEmpresa";
             this.lblEmpresa.Size = new System.Drawing.Size(104, 25);
             this.lblEmpresa.TabIndex = 19;
@@ -313,5 +381,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblEmpresa;
+        private System.Windows.Forms.Label lblEstadisticaRI;
+        private System.Windows.Forms.Label lblEstadisticaRL;
+        private System.Windows.Forms.Label lblEstadisticaPR;
+        private System.Windows.Forms.Label lblEstadisticaCB;
+        private System.Windows.Forms.Label lblEstadisticaCG;
     }
 }

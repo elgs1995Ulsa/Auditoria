@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Auditoria.Auditor;
 using Auditoria.Auditor.Cuestionarios;
 using Auditoria.Controladores;
+using Auditoria.Modelo;
 
 namespace Auditoria.Auditor
 {
@@ -105,6 +106,72 @@ namespace Auditoria.Auditor
         private void PanelDeCuestionarios_Load(object sender, EventArgs e)
         {
             lblEmpresa.Text = ControladorAuditor.empresaActiva.nombreFiscalEmpresa;
+        }
+
+        private void lblEstadisticaCG_Click(object sender, EventArgs e)
+        {
+            List<AuditoriaRecursosHumanos> lista = ControladorAuditor.seleccionarAuditoriaRecursosHumanos();
+
+            if (lista.Count > 0)
+            {
+                int numeroCuestionarios = lista.Count;
+                double puntaje = lista.Average(a => a.p1 + a.p2 + a.p3 + a.p4 + a.p5 + a.p6 + a.p7 + a.p8 + a.p9 + a.p10);
+                double maximo = 50;
+
+                double porcentaje = puntaje / maximo * 100;
+
+                EstadisticaAngel ea = new EstadisticaAngel("Caracter general", numeroCuestionarios, (int)puntaje, (int)maximo, (int)porcentaje);
+                ea.ShowDialog();
+            }
+            else
+            {
+                EstadisticaAngel ea = new EstadisticaAngel("Caracter general", 0, 0, 50, 0);
+                ea.ShowDialog();
+            }
+        }
+
+        private void lblEstadisticaCB_Click(object sender, EventArgs e)
+        {
+            List<AuditoriaCapacitacionYBienestar> lista = ControladorAuditor.seleccionarAuditoriaCapacitacionYBienestar();
+
+            if (lista.Count > 0)
+            {
+                int numeroCuestionarios = lista.Count;
+                double puntaje = lista.Average(a => a.p1 + a.p2 + a.p3 + a.p4 + a.p5 + a.p6 + a.p7 + a.p8);
+                double maximo = 40;
+
+                double porcentaje = puntaje / maximo * 100;
+
+                EstadisticaAngel ea = new EstadisticaAngel("Capacitación y bienestar", numeroCuestionarios, (int)puntaje, (int)maximo, (int)porcentaje);
+                ea.ShowDialog();
+            }
+            else
+            {
+                EstadisticaAngel ea = new EstadisticaAngel("Capacitación y bienestar", 0, 0, 40, 0);
+                ea.ShowDialog();
+            }
+        }
+
+        private void lblEstadisticaPR_Click(object sender, EventArgs e)
+        {
+            List<AuditoriaRecursosYReclutamiento> lista = ControladorAuditor.seleccionarAuditoriaRecursosYReclutamiento();
+
+            if (lista.Count > 0)
+            {
+                int numeroCuestionarios = lista.Count;
+                double puntaje = lista.Average(a => a.p1 + a.p2 + a.p3 + a.p4 + a.p5 + a.p6 + a.p7 + a.p8);
+                double maximo = 40;
+
+                double porcentaje = puntaje / maximo * 100;
+
+                EstadisticaAngel ea = new EstadisticaAngel("Planificación y reclutamiento", numeroCuestionarios, (int)puntaje, (int)maximo, (int)porcentaje);
+                ea.ShowDialog();
+            }
+            else
+            {
+                EstadisticaAngel ea = new EstadisticaAngel("Planificación y reclutamiento", 0, 0, 40, 0);
+                ea.ShowDialog();
+            }
         }
     }
 }
