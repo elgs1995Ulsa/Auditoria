@@ -93,23 +93,8 @@ namespace Auditoria
         {
             cerrarAplicacion(e);
         }
-        private int cont = 0;
-        private double f(int i)
-        {
 
-            cont += 5;
-            return cont;
-        }
-        private double acumulador = 0;
-        private double resultadoEncuesta()
-        {
-            using (var contexto = new Modelo.AuditoriaModeloDataContext())
-            {
-                var auditoria = contexto.AuditoriaCapacitacionYBienestar.FirstOrDefault();
 
-            }
-                return 0;
-         }
 
         private void Estadisticas_Load(object sender, EventArgs e)
         {
@@ -124,31 +109,248 @@ namespace Auditoria
 
         }
 
+
+        private double obtenerResultadoCapacitacion(int i)
+        {
+            double retornar = 0;
+            using (var contexto = new Modelo.AuditoriaModeloDataContext())
+            {
+                var auditoria = contexto.AuditoriaCapacitacionYBienestar.Where(x => x.idAuditoriaCapacitacionYBienestar == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                switch (i)
+                {
+                    case 0:
+                        retornar = auditoria.p1;
+                        break;
+                    case 1:
+                        retornar = auditoria.p2;
+                        break;
+                    case 2:
+                        retornar = auditoria.p3;
+                        break;
+                    case 3:
+                        retornar = auditoria.p4;
+                        break;
+                    case 4:
+                        retornar = auditoria.p5;
+                        break;
+                    case 5:
+                        retornar = auditoria.p6;
+                        break;
+
+                    case 6:
+                        retornar = auditoria.p7;
+                        break;
+                    case 7:
+                        retornar = auditoria.p8;
+                        break;
+
+
+                }
+            }
+            return retornar;
+        }
+
+        private double obtenerResultadoRecursosHumanos(int i)
+        {
+            double retornar = 0;
+            using (var contexto = new Modelo.AuditoriaModeloDataContext())
+            {
+                var auditoria = contexto.AuditoriaRecursosHumanos.Where(x => x.idAuditoriaRecursosHumanos == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                switch (i)
+                {
+                    case 0:
+                        retornar = auditoria.p1;
+                        break;
+                    case 1:
+                        retornar = auditoria.p2;
+                        break;
+                    case 2:
+                        retornar = auditoria.p3;
+                        break;
+                    case 3:
+                        retornar = auditoria.p4;
+                        break;
+                    case 4:
+                        retornar = auditoria.p5;
+                        break;
+                    case 5:
+                        retornar = auditoria.p6;
+                        break;
+
+                    case 6:
+                        retornar = auditoria.p7;
+                        break;
+                    case 7:
+                        retornar = auditoria.p8;
+                        break;
+                    case 8:
+                        retornar = auditoria.p9;
+                        break;
+                    case 9:
+                        retornar = auditoria.p10;
+                        break;
+
+
+
+                }
+            }
+            return retornar;
+        }
+        private double obtenerResultadosReclutamiento(int i)
+        {
+            double retornar = 0;
+            using (var contexto = new Modelo.AuditoriaModeloDataContext())
+            {
+                var auditoria = contexto.AuditoriaRecursosYReclutamiento.Where(x => x.idAuditoriaRecursosYReclutamiento == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                switch (i)
+                {
+                    case 0:
+                        retornar = auditoria.p1;
+                        break;
+                    case 1:
+                        retornar = auditoria.p2;
+                        break;
+                    case 2:
+                        retornar = auditoria.p3;
+                        break;
+                    case 3:
+                        retornar = auditoria.p4;
+                        break;
+                    case 4:
+                        retornar = auditoria.p5;
+                        break;
+                    case 5:
+                        retornar = auditoria.p6;
+                        break;
+
+                    case 6:
+                        retornar = auditoria.p7;
+                        break;
+                    case 7:
+                        retornar = auditoria.p8;
+                        break;
+                }
+            }
+            return retornar;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
 
-
-            /*
-            chart1.Series.Clear();
-            var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+            using (var contexto = new Modelo.AuditoriaModeloDataContext())
             {
-                Name = "Series1",
-                Color = System.Drawing.Color.Green,
-                IsVisibleInLegend = false,
-                IsXValueIndexed = true,
-                ChartType = SeriesChartType.Line
-            };
-            this.chart1.Series.Add(series1);
+                if (comboBoxAuditoria.Text == "Auditoria Capacitación y Bienestar")
+                {
+                    var auditoria = contexto.AuditoriaCapacitacionYBienestar.Where(x => x.idAuditoriaCapacitacionYBienestar == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                    chart1.Series.Clear();
+                    var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series1",
+                        Color = System.Drawing.Color.Green,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series2",
+                        Color = System.Drawing.Color.Red,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    this.chart1.Series.Add(series1);
+                    this.chart1.Series.Add(series2);
 
-            for (int i = 0; i < 8; i++)
-            {
-                series1.Points.AddXY(i, f(i));
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        series1.Points.AddXY(i,5);
+                    }
+                    for (int i = 0; i < 8; i++)
+                    {
+                        series2.Points.AddXY(i, obtenerResultadoCapacitacion(i));
+                    }
+                    chart1.Invalidate();
+
+                }
+                else if (comboBoxAuditoria.Text == "Auditoria Recursos Humanos")
+                {
+                    var auditoria = contexto.AuditoriaRecursosHumanos.Where(x => x.idAuditoriaRecursosHumanos == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                    chart1.Series.Clear();
+                    var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series1",
+                        Color = System.Drawing.Color.Blue,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series2",
+                        Color = System.Drawing.Color.Red,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    this.chart1.Series.Add(series1);
+                    this.chart1.Series.Add(series2);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        series1.Points.AddXY(i, 5);
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        series2.Points.AddXY(i, obtenerResultadoRecursosHumanos(i));
+                    }
+                    chart1.Invalidate();
+                }
+                else if (comboBoxAuditoria.Text == "Auditoria Recursos y Reclutamiento")
+                {
+                    var auditoria = contexto.AuditoriaRecursosYReclutamiento.Where(x => x.idAuditoriaRecursosYReclutamiento == Convert.ToInt32(comboBoxEncuestas.Text)).FirstOrDefault();
+                    chart1.Series.Clear();
+                    var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series1",
+                        Color = System.Drawing.Color.Blue,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+                    {
+                        Name = "Series2",
+                        Color = System.Drawing.Color.Red,
+                        IsVisibleInLegend = false,
+                        IsXValueIndexed = true,
+                        ChartType = SeriesChartType.Line
+                    };
+                    this.chart1.Series.Add(series1);
+                    this.chart1.Series.Add(series2);
+                    for (int i = 0; i < 8; i++)
+                    {
+                        series1.Points.AddXY(i, 5);
+                    }
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        series2.Points.AddXY(i, obtenerResultadosReclutamiento(i));
+                    }
+                    chart1.Invalidate();
+
+                }
             }
-            chart1.Invalidate();*/
+
         }
 
+        
         private void comboBoxEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             if (comboBoxEncuestas.DataSource != null)
             {
@@ -163,7 +365,7 @@ namespace Auditoria
                 {
                     comboBoxEncuestas.DataSource = (from x in contexto.AuditoriaCapacitacionYBienestar
                                                     where x.idEmpresa == empresa.idEmpresa
-                                                    select x.idAuditoriaCapacitacionYBienestar).ToList(); 
+                                                    select x.idAuditoriaCapacitacionYBienestar).ToList();
                 }
                 else if (comboBoxAuditoria.Text == "Auditoria Recursos Humanos")
                 {
