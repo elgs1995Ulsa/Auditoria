@@ -398,7 +398,6 @@ namespace Auditoria
                     {
                         g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
                     }
-                    //      bitmap.Save("test.jpg", ImageFormat.Jpeg);
 
                     using (FileStream fs = new FileStream("C:\\Users\\Eduardo\\Desktop\\Graficas/" + nombre + ".Jpeg", FileMode.Create, FileAccess.ReadWrite))
                     {
