@@ -105,7 +105,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.botonAuditar);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 358);
@@ -116,7 +116,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 31);
+            this.label1.Size = new System.Drawing.Size(173, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Empresas Para Auditar";
             // 
@@ -133,12 +133,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 72);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(658, 139);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // VerEmpresa
             // 
@@ -152,6 +158,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerEmpresa";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerEmpresa_FormClosed);
+            this.Load += new System.EventHandler(this.VerEmpresa_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -172,8 +179,8 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button botonAuditar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

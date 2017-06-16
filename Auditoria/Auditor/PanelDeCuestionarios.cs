@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Auditoria.Auditor;
 using Auditoria.Auditor.Cuestionarios;
+using Auditoria.Controladores;
 
 namespace Auditoria.Auditor
 {
@@ -94,6 +95,11 @@ namespace Auditoria.Auditor
         private void PanelDeCuestionarios_FormClosed(object sender, FormClosedEventArgs e)
         {
             cerrarAplicacion(e);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

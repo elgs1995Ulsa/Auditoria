@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Auditoria.Administrador;
 using Auditoria.Auditor;
+using Auditoria.Controladores;
 
 namespace Auditoria
 {
@@ -53,6 +54,7 @@ namespace Auditoria
                     {
                         InicioAuditor form = new InicioAuditor();
                         form.Show();
+                        ControladorAuditor.auditorActivo = contexto.Auditor.FirstOrDefault(a => a.idUsuario == usuario.idUsuario);
                         this.Visible = false;
                     }
 
