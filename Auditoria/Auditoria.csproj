@@ -124,6 +124,12 @@
     <Compile Include="Auditor\Cuestionarios\PlanificacionCuestionario.Designer.cs">
       <DependentUpon>PlanificacionCuestionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Auditor\Cuestionarios\Puntaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auditor\Cuestionarios\Puntaje.Designer.cs">
+      <DependentUpon>Puntaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Auditor\Cuestionarios\ReclutamientoCuestionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auditor\Cuestionarios\PlanificacionCuestionario.resx">
       <DependentUpon>PlanificacionCuestionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auditor\Cuestionarios\Puntaje.resx">
+      <DependentUpon>Puntaje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Auditor\Cuestionarios\ReclutamientoCuestionario.resx">
       <DependentUpon>ReclutamientoCuestionario.cs</DependentUpon>

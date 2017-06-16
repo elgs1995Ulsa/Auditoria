@@ -1,4 +1,5 @@
-﻿using Auditoria.Controladores;
+﻿using Auditoria.Auditor.Cuestionarios;
+using Auditoria.Controladores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,6 +45,23 @@ namespace Auditoria
             if (insertado)
             {
                 MessageBox.Show("Se ha generado el checklist de forma correcta");
+
+                int puntajeInt =
+                    comboBox1.SelectedIndex + 1 +
+                    comboBox2.SelectedIndex + 1 +
+                    comboBox3.SelectedIndex + 1 +
+                    comboBox4.SelectedIndex + 1 +
+                    comboBox5.SelectedIndex + 1 +
+                    comboBox6.SelectedIndex + 1 +
+                    comboBox7.SelectedIndex + 1 +
+                    comboBox8.SelectedIndex + 1 +
+                    comboBox9.SelectedIndex + 1 + 
+                    comboBox10.SelectedIndex + 1;
+
+                Puntaje puntaje = new Puntaje(puntajeInt, 50, "Carácter general");
+                puntaje.ShowDialog();
+
+                Close();
             }
             else
             {

@@ -59,9 +59,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(363, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(205, 24);
+            this.label5.Size = new System.Drawing.Size(214, 24);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Formación y Desarrollo";
+            this.label5.Text = "Capacitación y bienestar";
             // 
             // formacionDesarrollo
             // 

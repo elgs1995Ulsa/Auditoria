@@ -101,5 +101,10 @@ namespace Auditoria.Auditor
         {
 
         }
+
+        private void PanelDeCuestionarios_Load(object sender, EventArgs e)
+        {
+            lblEmpresa.Text = ControladorAuditor.empresaActiva.nombreFiscalEmpresa;
+        }
     }
 }

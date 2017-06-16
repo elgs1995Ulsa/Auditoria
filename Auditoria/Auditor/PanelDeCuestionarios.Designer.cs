@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblEmpresa = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.caracterGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reclutamiento)).BeginInit();
@@ -250,12 +251,24 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Selecciona un Cuestionario";
             // 
+            // lblEmpresa
+            // 
+            this.lblEmpresa.AutoSize = true;
+            this.lblEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblEmpresa.Location = new System.Drawing.Point(15, 25);
+            this.lblEmpresa.Name = "lblEmpresa";
+            this.lblEmpresa.Size = new System.Drawing.Size(104, 25);
+            this.lblEmpresa.TabIndex = 19;
+            this.lblEmpresa.Text = "Empresa";
+            // 
             // PanelDeCuestionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(753, 508);
+            this.Controls.Add(this.lblEmpresa);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -263,6 +276,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PanelDeCuestionarios";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PanelDeCuestionarios_FormClosed);
+            this.Load += new System.EventHandler(this.PanelDeCuestionarios_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.caracterGeneral)).EndInit();
@@ -298,5 +312,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblEmpresa;
     }
 }

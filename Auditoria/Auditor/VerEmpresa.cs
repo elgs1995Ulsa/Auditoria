@@ -29,10 +29,10 @@ namespace Auditoria.Auditor
 
         private void botonAuditar_Click(object sender, EventArgs e)
         {
+            ControladorAuditor.empresaActiva = empresaSeleccionada;
+
             PanelDeCuestionarios  form = new PanelDeCuestionarios();
             form.Show();
-
-            ControladorAuditor.empresaActiva = empresaSeleccionada;
 
             this.Visible = false;
         }
