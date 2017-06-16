@@ -1,0 +1,79 @@
+USE semestralAuditoria
+GO
+
+CREATE TABLE AuditoriaRecursosHumanos (
+	-- PK
+	idAuditoriaRecursosHumanos INTEGER PRIMARY KEY IDENTITY(1,1),
+
+	-- DATOS
+	p1 INTEGER NOT NULL,
+	p2 INTEGER NOT NULL,
+	p3 INTEGER NOT NULL,
+	p4 INTEGER NOT NULL,
+	p5 INTEGER NOT NULL,
+	p6 INTEGER NOT NULL,
+	p7 INTEGER NOT NULL,
+	p8 INTEGER NOT NULL,
+	p9 INTEGER NOT NULL,
+	p10 INTEGER NOT NULL,
+	comentario VARCHAR(1000) DEFAULT '',
+
+	-- FKs
+	idAuditor INTEGER NOT NULL,
+	idEmpresa INTEGER NOT NULL,
+
+	-- CONSTRAINTS
+	FOREIGN KEY (idAuditor) REFERENCES Auditor(idAuditor),
+	FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+)
+GO
+
+CREATE TABLE AuditoriaRecursosYReclutamiento (
+	-- PK
+	idAuditoriaRecursosYReclutamiento INTEGER PRIMARY KEY IDENTITY(1,1),
+
+	-- DATOS
+	p1 INTEGER NOT NULL,
+	p2 INTEGER NOT NULL,
+	p3 INTEGER NOT NULL,
+	p4 INTEGER NOT NULL,
+	p5 INTEGER NOT NULL,
+	p6 INTEGER NOT NULL,
+	p7 INTEGER NOT NULL,
+	p8 INTEGER NOT NULL,
+	comentario VARCHAR(1000) DEFAULT '',
+
+	-- FKs
+	idAuditor INTEGER NOT NULL,
+	idEmpresa INTEGER NOT NULL,
+
+	-- CONSTRAINTS
+	FOREIGN KEY (idAuditor) REFERENCES Auditor(idAuditor),
+	FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+)
+GO
+
+CREATE TABLE AuditoriaCapacitacionYBienestar (
+	-- PK
+	idAuditoriaCapacitacionYBienestar INTEGER PRIMARY KEY IDENTITY(1,1),
+
+	-- DATOS
+	p1 INTEGER NOT NULL,
+	p2 INTEGER NOT NULL,
+	p3 INTEGER NOT NULL,
+	p4 INTEGER NOT NULL,
+	p5 INTEGER NOT NULL,
+	p6 INTEGER NOT NULL,
+	p7 INTEGER NOT NULL,
+	p8 INTEGER NOT NULL,
+	comentario VARCHAR(1000) DEFAULT '',
+
+	-- FKs
+	idAuditor INTEGER NOT NULL,
+	idEmpresa INTEGER NOT NULL,
+
+	-- CONSTRAINTS
+	FOREIGN KEY (idAuditor) REFERENCES Auditor(idAuditor),
+	FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+)
+GO
