@@ -36,16 +36,11 @@
             this.registrarAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verAuditoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verGraficasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.semestralAuditoriaDataSet = new Auditoria.semestralAuditoriaDataSet();
-            this.personaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personaTableAdapter = new Auditoria.semestralAuditoriaDataSetTableAdapters.PersonaTableAdapter();
             this.nombresPersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoPaternoPersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoMaternoPersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,17 +51,20 @@
             this.coloniaPersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entidadFederativaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.perfilProfesionalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.semestralAuditoriaDataSet = new Auditoria.semestralAuditoriaDataSet();
+            this.personaTableAdapter = new Auditoria.semestralAuditoriaDataSetTableAdapters.PersonaTableAdapter();
+            this.vincularAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semestralAuditoriaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.semestralAuditoriaDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
-            this.verGraficasToolStripMenuItem,
             this.acercaDeToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -83,7 +81,8 @@
             this.verEmpresasToolStripMenuItem,
             this.registrarAuditorToolStripMenuItem,
             this.verAuditoresToolStripMenuItem,
-            this.estadisticasToolStripMenuItem});
+            this.estadisticasToolStripMenuItem,
+            this.vincularAuditorToolStripMenuItem});
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.inicioToolStripMenuItem.Text = "Inicio";
@@ -122,21 +121,6 @@
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
             this.estadisticasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasToolStripMenuItem_Click);
             // 
-            // verGraficasToolStripMenuItem
-            // 
-            this.verGraficasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportarAExcelToolStripMenuItem});
-            this.verGraficasToolStripMenuItem.Name = "verGraficasToolStripMenuItem";
-            this.verGraficasToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.verGraficasToolStripMenuItem.Text = "Reporte";
-            // 
-            // exportarAExcelToolStripMenuItem
-            // 
-            this.exportarAExcelToolStripMenuItem.Name = "exportarAExcelToolStripMenuItem";
-            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.exportarAExcelToolStripMenuItem.Text = "Exportar a Excel";
-            this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
-            // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -148,7 +132,7 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
@@ -189,20 +173,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(751, 150);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // semestralAuditoriaDataSet
-            // 
-            this.semestralAuditoriaDataSet.DataSetName = "semestralAuditoriaDataSet";
-            this.semestralAuditoriaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // personaBindingSource
-            // 
-            this.personaBindingSource.DataMember = "Persona";
-            this.personaBindingSource.DataSource = this.semestralAuditoriaDataSet;
-            // 
-            // personaTableAdapter
-            // 
-            this.personaTableAdapter.ClearBeforeFill = true;
             // 
             // nombresPersonaDataGridViewTextBoxColumn
             // 
@@ -264,6 +234,27 @@
             this.perfilProfesionalDataGridViewTextBoxColumn.HeaderText = "perfilProfesional";
             this.perfilProfesionalDataGridViewTextBoxColumn.Name = "perfilProfesionalDataGridViewTextBoxColumn";
             // 
+            // personaBindingSource
+            // 
+            this.personaBindingSource.DataMember = "Persona";
+            this.personaBindingSource.DataSource = this.semestralAuditoriaDataSet;
+            // 
+            // semestralAuditoriaDataSet
+            // 
+            this.semestralAuditoriaDataSet.DataSetName = "semestralAuditoriaDataSet";
+            this.semestralAuditoriaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // personaTableAdapter
+            // 
+            this.personaTableAdapter.ClearBeforeFill = true;
+            // 
+            // vincularAuditorToolStripMenuItem
+            // 
+            this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
+            this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
+            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
+            // 
             // VerAuditores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,8 +270,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semestralAuditoriaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.semestralAuditoriaDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,8 +286,6 @@
         private System.Windows.Forms.ToolStripMenuItem registrarAuditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verAuditoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verGraficasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarAExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
@@ -315,5 +304,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn coloniaPersonaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn entidadFederativaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn perfilProfesionalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem vincularAuditorToolStripMenuItem;
     }
 }

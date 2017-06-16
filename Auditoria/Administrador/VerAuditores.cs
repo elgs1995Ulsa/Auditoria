@@ -45,12 +45,7 @@ namespace Auditoria.Administrador
             this.Visible = false;
         }
 
-        private void exportarAExcelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExportarExcel form = new ExportarExcel();
-            form.Show();
-            this.Visible = false;
-        }
+
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -94,6 +89,13 @@ namespace Auditoria.Administrador
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void vincularAuditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VincularAuditor form = new VincularAuditor();
+            form.Show();
+            this.Visible = false;
         }
     }
 }

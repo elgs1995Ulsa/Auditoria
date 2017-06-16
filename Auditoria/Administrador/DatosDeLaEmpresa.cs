@@ -18,12 +18,7 @@ namespace Auditoria
             InitializeComponent();
         }
 
-        private void exportarAExcelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExportarExcel form = new ExportarExcel();
-            form.Show();
-            this.Visible = false;
-        }
+
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -63,13 +58,6 @@ namespace Auditoria
         private void estadisticasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Estadisticas form = new Estadisticas();
-            form.Show();
-            this.Visible = false;
-        }
-
-        private void exportarAExcelToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ExportarExcel form = new ExportarExcel();
             form.Show();
             this.Visible = false;
         }
@@ -137,6 +125,13 @@ namespace Auditoria
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void vincularAuditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VincularAuditor form = new VincularAuditor();
+            form.Show();
+            this.Visible = false;
         }
     }
 }
