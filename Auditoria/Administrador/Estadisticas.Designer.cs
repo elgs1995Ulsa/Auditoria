@@ -39,6 +39,7 @@
             this.registrarAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verAuditoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vincularAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,9 @@
             this.nombreEmpresaDataSet = new Auditoria.nombreEmpresaDataSet();
             this.empresaTableAdapter = new Auditoria.nombreEmpresaDataSetTableAdapters.EmpresaTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
-            this.vincularAuditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.btnGrafica = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empresaBindingSource)).BeginInit();
@@ -119,6 +122,13 @@
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
             this.estadisticasToolStripMenuItem.Click += new System.EventHandler(this.estadisticasToolStripMenuItem_Click_1);
             // 
+            // vincularAuditorToolStripMenuItem
+            // 
+            this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
+            this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
+            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
+            // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -130,7 +140,7 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click_1);
             // 
@@ -154,16 +164,18 @@
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
+            legend1.Title = "Anotaciones";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(117, 117);
+            this.chart1.Location = new System.Drawing.Point(12, 117);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(501, 246);
+            this.chart1.Size = new System.Drawing.Size(606, 246);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // comboBoxAuditoria
             // 
@@ -172,7 +184,7 @@
             "Auditoria Capacitación y Bienestar",
             "Auditoria Recursos Humanos",
             "Auditoria Recursos y Reclutamiento"});
-            this.comboBoxAuditoria.Location = new System.Drawing.Point(117, 59);
+            this.comboBoxAuditoria.Location = new System.Drawing.Point(12, 61);
             this.comboBoxAuditoria.Name = "comboBoxAuditoria";
             this.comboBoxAuditoria.Size = new System.Drawing.Size(185, 21);
             this.comboBoxAuditoria.TabIndex = 3;
@@ -181,14 +193,14 @@
             // comboBoxEncuestas
             // 
             this.comboBoxEncuestas.FormattingEnabled = true;
-            this.comboBoxEncuestas.Location = new System.Drawing.Point(688, 231);
+            this.comboBoxEncuestas.Location = new System.Drawing.Point(677, 117);
             this.comboBoxEncuestas.Name = "comboBoxEncuestas";
             this.comboBoxEncuestas.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEncuestas.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(688, 300);
+            this.button1.Location = new System.Drawing.Point(677, 171);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 5;
@@ -232,18 +244,30 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // vincularAuditorToolStripMenuItem
+            // txtTitulo
             // 
-            this.vincularAuditorToolStripMenuItem.Name = "vincularAuditorToolStripMenuItem";
-            this.vincularAuditorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.vincularAuditorToolStripMenuItem.Text = "Vincular Auditor";
-            this.vincularAuditorToolStripMenuItem.Click += new System.EventHandler(this.vincularAuditorToolStripMenuItem_Click);
+            this.txtTitulo.Location = new System.Drawing.Point(677, 244);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(121, 20);
+            this.txtTitulo.TabIndex = 8;
+            // 
+            // btnGrafica
+            // 
+            this.btnGrafica.Location = new System.Drawing.Point(677, 285);
+            this.btnGrafica.Name = "btnGrafica";
+            this.btnGrafica.Size = new System.Drawing.Size(121, 23);
+            this.btnGrafica.TabIndex = 9;
+            this.btnGrafica.Text = "Exportar";
+            this.btnGrafica.UseVisualStyleBackColor = true;
+            this.btnGrafica.Click += new System.EventHandler(this.btnGrafica_Click);
             // 
             // Estadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 431);
+            this.Controls.Add(this.btnGrafica);
+            this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBoxEmpresa);
             this.Controls.Add(this.button1);
@@ -289,5 +313,8 @@
         private nombreEmpresaDataSetTableAdapters.EmpresaTableAdapter empresaTableAdapter;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem vincularAuditorToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.Button btnGrafica;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
